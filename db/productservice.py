@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from db.models import Product
+from sqlalchemy.orm import joinedload
 from db import get_db
 
 def create_product_db(product_name):
@@ -11,11 +12,11 @@ def create_product_db(product_name):
 
 def get_all_products_db():
     with next(get_db()) as db:
-        return db.query(Product).all()
+        return db.query(Product).options(joinedload(Product.photos)).all()
 
 def get_product_by_id_db(product_id: int):
     with next(get_db()) as db:
-        return db.query(Product).filter_by(id=product_id).first()
+        return db.query(Product).options(joinedload(Product.photos)).filter_by(id=product_id).first()
 
 def update_product_name_db(product_id: int, new_name: str):
     with next(get_db()) as db:
