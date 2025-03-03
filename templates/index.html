@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Продукты</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.product_name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Аксессуары</h1>
+    <ul>
+        {% for accessory in accessories %}
+            <li>{{ accessory.accessory_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

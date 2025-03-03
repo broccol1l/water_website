@@ -7,3 +7,4 @@ python-dotenv
 jinja2
 alembic
 python-multipart
+httpx
