@@ -2,20 +2,50 @@
 <html lang="ru">
 <head>
     <title>Главная страница</title>
+    <link rel="stylesheet" href="static/styles/style.css">
+    <script defer src="static/scripts/script.js"></script>
 </head>
 <body>
-    <h1>Продукты</h1>
-    <ul>
-        {% for product in products %}
-            <li>{{ product.product_name }}</li>
-        {% endfor %}
-    </ul>
+    <header class="header">
+    <img src="/static/images/logo.jpg" alt="Логотип" class="logo">
 
-    <h1>Аксессуары</h1>
-    <ul>
-        {% for accessory in accessories %}
-            <li>{{ accessory.accessory_name }}</li>
-        {% endfor %}
-    </ul>
+    <div class="qr-container">
+        <img src="/static/images/qrcode_header.png" alt="QR Code" class="qr-code">
+    </div>
+
+    <nav class="nav">
+        <a href="#" id="about">О компании</a>
+        <a href="#" id="payment">Способы оплаты</a>
+        <a href="#" id="contacts">Контакты</a>
+
+        <div class="dropdown">
+            <a href="#">Продукция ⬇</a>
+            <ul class="dropdown-menu">
+                {% for product in products %}
+                    <li><a href="#">{{ product.product_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <a href="#">Аксессуары ⬇</a>
+            <ul class="dropdown-menu">
+                {% for accessory in accessories %}
+                    <li><a href="#">{{ accessory.accessory_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</header>
+<section class="banner">
+    <img src="static/images/banner.jpg" alt="Баннер" class="banner-image">
+</section>
+
+<!-- Модальное окно -->
+    <div id="modalOverlay" class="modal-overlay"></div>
+    <div id="contactModal" class="modal">
+        <p>Наши контакты: +998 (XX) XXX-XX-XX</p>
+        <button id="closeModal">Закрыть</button>
+    </div>
 </body>
 </html>
