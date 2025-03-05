@@ -1,16 +1,16 @@
 import logging
 
 from fastapi import FastAPI, Request, Response
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi.templating import Jinja2Templates
 
 from fastapi.staticfiles import StaticFiles
 
-from product_api.product import product_router, get_all_products_api
+from product_api.product import product_router, get_all_products_api, get_product_by_id_api
 from product_photo_api.product_photo import product_photo_router
-from accessory_api.accessory import accessory_router, get_all_accessories_api
+from accessory_api.accessory import accessory_router, get_all_accessories_api, get_accessory_by_id_api
 from accessory_photo_api.accessory_photo import accessory_photo_router
 
 from db import Base, engine
@@ -57,4 +57,26 @@ async def index(request: Request):
     return templates.TemplateResponse(
         "index.html",
         {"request": request, "products": products, "accessories": accessories}
+    )
+
+@app.get("/product/{product_id}", response_class=HTMLResponse)
+async def product_page(request: Request, product_id: int):
+    product = await get_product_by_id_api(product_id)
+    if not product:
+        return JSONResponse(content={"error": "Продукт не найден"}, status_code=404)
+
+    return templates.TemplateResponse(
+        "product.html",
+        {"request": request, "product": product}
+    )
+
+@app.get("/accessory/{accessory_id}", response_class=HTMLResponse)
+async def accessory_page(request: Request, accessory_id: int):
+    accessory = await get_accessory_by_id_api(accessory_id)
+    if not accessory:
+        return JSONResponse(content={"error": "Аксессуар не найден"}, status_code=404)
+
+    return templates.TemplateResponse(
+        "accessory.html",
+        {"request": request, "accessory": accessory}
     )

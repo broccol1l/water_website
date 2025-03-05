@@ -7,44 +7,54 @@
 </head>
 <body>
     <header class="header">
-    <img src="/static/images/logo.jpg" alt="Логотип" class="logo">
+        <img src="/static/images/logotip.png" alt="Логотип" class="logo">
 
-    <div class="qr-container">
-        <img src="/static/images/qrcode_header.png" alt="QR Code" class="qr-code">
-    </div>
-
-    <nav class="nav">
-        <a href="#" id="about">О компании</a>
-        <a href="#" id="payment">Способы оплаты</a>
-        <a href="#" id="contacts">Контакты</a>
-
-        <div class="dropdown">
-            <a href="#">Продукция ⬇</a>
-            <ul class="dropdown-menu">
-                {% for product in products %}
-                    <li><a href="#">{{ product.product_name }}</a></li>
-                {% endfor %}
-            </ul>
+        <div class="qr-container">
+            <img src="/static/images/qrcode_header.png" alt="QR Code" class="qr-code">
         </div>
 
-        <div class="dropdown">
-            <a href="#">Аксессуары ⬇</a>
-            <ul class="dropdown-menu">
-                {% for accessory in accessories %}
-                    <li><a href="#">{{ accessory.accessory_name }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </nav>
-</header>
-<section class="banner">
-    <img src="static/images/banner.jpg" alt="Баннер" class="banner-image">
-</section>
+        <nav class="nav">
+            <a href="javascript:void(0);" id="about">О компании</a>
+            <a href="javascript:void(0);" id="payment">Способы оплаты</a>
+            <a href="javascript:void(0);" id="contacts">Контакты</a>
 
-<!-- Модальное окно -->
+            <div class="dropdown">
+                <a href="javascript:void(0);">Продукция</a>
+                <ul class="dropdown-menu">
+                    {% for product in products %}
+                        <li>
+                            <a href="/product/{{ product.product_name | replace(' ', '_') }}" class="product-link" data-name="{{ product.product_name }}">
+                                {{ product.product_name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a href="javascript:void(0);">Аксессуары</a>
+                <ul class="dropdown-menu">
+                    {% for accessory in accessories %}
+                        <li>
+                            <a href="/accessory/{{ accessory.accessory_name | replace(' ', '_') }}" class="accessory-link" data-name="{{ accessory.accessory_name }}">
+                                {{ accessory.accessory_name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <img src="static/images/banner.jpg" alt="Баннер" class="banner-image">
+    </section>
+
+    <!-- Модальное окно -->
     <div id="modalOverlay" class="modal-overlay"></div>
-    <div id="contactModal" class="modal">
-        <p>Наши контакты: +998 (XX) XXX-XX-XX</p>
+    <div id="productModal" class="modal">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
         <button id="closeModal">Закрыть</button>
     </div>
 </body>
