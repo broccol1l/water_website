@@ -19,30 +19,32 @@
             <a href="javascript:void(0);" id="contacts">Контакты</a>
 
             <div class="dropdown">
-                <a href="javascript:void(0);">Продукция</a>
-                <ul class="dropdown-menu">
-                    {% for product in products %}
-                        <li>
-                            <a href="/product/{{ product.product_name | replace(' ', '_') }}" class="product-link" data-name="{{ product.product_name }}">
-                                {{ product.product_name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+    <a href="javascript:void(0);">Продукция</a>
+    <ul class="dropdown-menu">
+        {% for product in products %}
+            <li>
+                <a href="javascript:void(0);" class="product-link"
+                   data-name="{{ product.product_name }}">
+                    {{ product.product_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 
-            <div class="dropdown">
-                <a href="javascript:void(0);">Аксессуары</a>
-                <ul class="dropdown-menu">
-                    {% for accessory in accessories %}
-                        <li>
-                            <a href="/accessory/{{ accessory.accessory_name | replace(' ', '_') }}" class="accessory-link" data-name="{{ accessory.accessory_name }}">
-                                {{ accessory.accessory_name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+<div class="dropdown">
+    <a href="javascript:void(0);">Аксессуары</a>
+    <ul class="dropdown-menu">
+        {% for accessory in accessories %}
+            <li>
+                <a href="javascript:void(0);" class="accessory-link"
+                   data-name="{{ accessory.accessory_name }}">
+                    {{ accessory.accessory_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
         </nav>
     </header>
 

@@ -80,3 +80,4 @@ async def accessory_page(request: Request, accessory_id: int):
         "accessory.html",
         {"request": request, "accessory": accessory}
     )
+
