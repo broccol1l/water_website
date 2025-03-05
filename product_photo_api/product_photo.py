@@ -38,6 +38,21 @@ async def add_product_photo_api(product_id: int, photo_file: UploadFile = File(.
 
     return {"status": 1, "message": "Файл успешно загружен", "file_path": file_path}
 
+@product_photo_router.get('/get_photos/{product_id}')
+def get_product_photos(product_id: int, db: Session = Depends(get_db)):
+    product = db.query(Product).filter(Product.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Продукт не найден")
+
+    photos = db.query(ProductPhoto).filter(ProductPhoto.product_id == product_id).all()
+
+    return {
+        "product_name": product.product_name,
+        "id": product.id,
+        "photos": [{"id": photo.id, "product_id": photo.product_id, "product_photo_url": photo.product_photo_url} for
+                   photo in photos]
+    }
+
 
 @product_photo_router.delete('/delete_photo')
 async def delete_product_photo_api(product_id: int, db: Session = Depends(get_db)):

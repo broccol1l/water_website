@@ -19,32 +19,35 @@
             <a href="javascript:void(0);" id="contacts">Контакты</a>
 
             <div class="dropdown">
-    <a href="javascript:void(0);">Продукция</a>
-    <ul class="dropdown-menu">
-        {% for product in products %}
-            <li>
-                <a href="javascript:void(0);" class="product-link"
-                   data-name="{{ product.product_name }}">
-                    {{ product.product_name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+                <a href="javascript:void(0);">Продукция</a>
+                <ul class="dropdown-menu">
+                    {% for product in products %}
+                        <li>
+                            <a href="javascript:void(0);" class="product-link"
+                               data-name="{{ product.product_name }}"
+                               data-description="{{ product.description }}"
+                               data-photos="{{ product.photos | map(attribute='product_photo_url') | join(',') }}">
+                                {{ product.product_name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
-<div class="dropdown">
-    <a href="javascript:void(0);">Аксессуары</a>
-    <ul class="dropdown-menu">
-        {% for accessory in accessories %}
-            <li>
-                <a href="javascript:void(0);" class="accessory-link"
-                   data-name="{{ accessory.accessory_name }}">
-                    {{ accessory.accessory_name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+            <div class="dropdown">
+                <a href="javascript:void(0);">Аксессуары</a>
+                <ul class="dropdown-menu">
+                    {% for accessory in accessories %}
+                        <li>
+                            <a href="javascript:void(0);" class="accessory-link"
+                               data-name="{{ accessory.accessory_name }}"
+                               data-description="{{ accessory.description }}">
+                                {{ accessory.accessory_name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -55,9 +58,12 @@
     <!-- Модальное окно -->
     <div id="modalOverlay" class="modal-overlay"></div>
     <div id="productModal" class="modal">
-        <h2 id="modalTitle"></h2>
-        <p id="modalDescription"></p>
-        <button id="closeModal">Закрыть</button>
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div id="modalPhotos" class="modal-photos"></div>
+        </div>
     </div>
 </body>
 </html>
