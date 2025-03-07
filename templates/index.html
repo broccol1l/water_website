@@ -7,7 +7,7 @@
 </head>
 <body>
     <header class="header">
-        <img src="/static/images/logotip.png" alt="Логотип" class="logo">
+        <img src="/static/images/new_logotip.png" alt="Логотип" class="logo">
 
         <div class="qr-container">
             <img src="/static/images/qrcode_header.png" alt="QR Code" class="qr-code">
@@ -25,7 +25,6 @@
                         <li>
                             <a href="javascript:void(0);" class="product-link"
                                data-name="{{ product.product_name }}"
-                               data-description="{{ product.description }}"
                                data-photos="{{ product.photos | map(attribute='product_photo_url') | join(',') }}">
                                 {{ product.product_name }}
                             </a>
@@ -40,8 +39,7 @@
                     {% for accessory in accessories %}
                         <li>
                             <a href="javascript:void(0);" class="accessory-link"
-                               data-name="{{ accessory.accessory_name }}"
-                               data-description="{{ accessory.description }}">
+                               data-name="{{ accessory.accessory_name }}">
                                 {{ accessory.accessory_name }}
                             </a>
                         </li>
@@ -61,7 +59,6 @@
         <div class="modal-content">
             <span id="closeModal" class="close-btn">&times;</span>
             <h2 id="modalTitle"></h2>
-            <p id="modalDescription"></p>
             <div id="modalPhotos" class="modal-photos"></div>
         </div>
     </div>

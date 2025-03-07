@@ -1,7 +1,6 @@
 import logging
 
 from fastapi import FastAPI, Request, Response, Depends
-from db import get_db
 
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,13 +15,13 @@ from accessory_api.accessory import accessory_router, get_all_accessories_api, g
 from accessory_photo_api.accessory_photo import accessory_photo_router
 
 from db import Base, engine
-from sqlalchemy.orm import Session
 
 Base.metadata.create_all(engine)
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/db", StaticFiles(directory="db"), name="db")
 
 app.add_middleware(
     CORSMiddleware,
@@ -62,48 +61,6 @@ async def index(request: Request):
         {"request": request, "products": products, "accessories": accessories}
     )
 
-@app.get("/product/{product_id}", response_class=HTMLResponse)
-async def product_page(request: Request, product_id: int):
-    product = await get_product_by_id_api(product_id)
-    if not product:
-        return JSONResponse(content={"error": "Продукт не найден"}, status_code=404)
-
-    return templates.TemplateResponse(
-        "product.html",
-        {"request": request, "product": product}
-    )
-
-@app.get("/accessory/{accessory_id}", response_class=HTMLResponse)
-async def accessory_page(request: Request, accessory_id: int):
-    accessory = await get_accessory_by_id_api(accessory_id)
-    if not accessory:
-        return JSONResponse(content={"error": "Аксессуар не найден"}, status_code=404)
-
-    return templates.TemplateResponse(
-        "accessory.html",
-        {"request": request, "accessory": accessory}
-    )
-
-@app.get("/accessory/{accessory_id}", response_class=HTMLResponse)
-async def accessory_page(request: Request, accessory_id: int):
-    accessory = await get_accessory_by_id_api(accessory_id)
-    if not accessory:
-        return JSONResponse(content={"error": "Аксессуар не найден"}, status_code=404)
-
-    return templates.TemplateResponse(
-        "accessory.html",
-        {"request": request, "accessory": accessory}
-    )
-
-@app.get("/product_photo/{product_id}", response_class=HTMLResponse)
-async def product_photo_page(request: Request, product_id: int, db: Session = Depends(get_db)):
-    product_data = get_product_photos(product_id, db)  # Убираем await, так как это синхронная функция
-    if not product_data:
-        return JSONResponse(content={"error": "Продукт не найден"}, status_code=404)
-    return templates.TemplateResponse(
-        "product_photo.html",
-        {"request": request, "product": product_data}  # Передаём `product`
-    )
 
 
 

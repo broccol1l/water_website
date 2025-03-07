@@ -19,13 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalOverlay = document.getElementById("modalOverlay");
     const productModal = document.getElementById("productModal");
     const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription");
     const modalPhotos = document.getElementById("modalPhotos");
     const closeModal = document.getElementById("closeModal");
 
-    function openModal(title, description, photos) {
+    function openModal(title, photos) {
         modalTitle.textContent = title;
-        modalDescription.textContent = description;
 
         // Очистка предыдущих фото
         modalPhotos.innerHTML = '';
@@ -33,12 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Добавление фотографий
         if (photos && photos.length > 0) {
             photos.forEach(photoUrl => {
-                const img = document.createElement('img');
-                img.src = photoUrl;
-                img.alt = 'Фото продукта';
-                img.classList.add('modal-photo');
-                modalPhotos.appendChild(img);
-            });
+            const img = document.createElement('img');
+            // Ensure path starts with a slash if it doesn't already
+            img.src = photoUrl.startsWith('/') ? photoUrl : '/' + photoUrl;
+            img.alt = 'Фото продукта';
+            img.classList.add('modal-photo');
+            modalPhotos.appendChild(img);
+        });
         } else {
             modalPhotos.innerHTML = '<p>Нет фото</p>';
         }
@@ -57,11 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", (event) => {
             event.preventDefault();
             const title = link.getAttribute("data-name");
-            const description = link.getAttribute("data-description");
             const photosAttr = link.getAttribute("data-photos");
             const photos = photosAttr ? photosAttr.split(',') : [];
 
-            openModal(title, description, photos);
+            openModal(title, photos);
         });
     });
 

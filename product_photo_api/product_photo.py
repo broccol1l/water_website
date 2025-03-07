@@ -1,7 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
 import uuid
 import os
-import glob
 from sqlalchemy.orm import Session
 from db import get_db
 from db.models import ProductPhoto, Product
@@ -72,3 +71,19 @@ async def delete_product_photo_api(product_id: int, db: Session = Depends(get_db
 
     return {"status": 1, "message": "Фото успешно удалено"}
 
+@product_photo_router.get("/product_photos/{product_id}")
+async def get_product_photos_prod_by_id(product_id: int):
+    photo_dir = "db/photos"
+    photo_list = []
+
+    for file in os.listdir(photo_dir):
+        if not file.startswith("photo_"):  # Пропускаем не подходящие файлы
+            continue
+
+        parts = file.rsplit("_", 1)  # Теперь отделяем только `product_id`
+        if len(parts) == 2:
+            prod_id, ext = parts[1].split(".")  # Получаем ID и расширение
+            if prod_id == str(product_id):  # Сравниваем ID
+                photo_list.append(f"/static/photos/{file}")
+
+    return {"photos": photo_list}
