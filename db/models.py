@@ -7,6 +7,7 @@ class Product(Base):
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     product_name = Column(String, nullable=False)
+    product_description = Column(String, nullable=True)
 
     photos = relationship("ProductPhoto", back_populates="product", cascade="all, delete-orphan")
 
@@ -26,6 +27,7 @@ class Accessory(Base):
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     accessory_name = Column(String, nullable=False)
+    accessory_description = Column(String, nullable=True)
 
     photos = relationship("AccessoryPhoto", back_populates="accessory", cascade="all, delete-orphan")
 

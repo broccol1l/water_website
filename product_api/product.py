@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
 from db.productservice import *
-
+from typing import Optional
 product_router = APIRouter(prefix="/product", tags=['Продукты'])
 
 
 @product_router.post('/add_product')
-async def create_product_api(product_name: str):
-    product = create_product_db(product_name=product_name)
+async def create_product_api(product_name: str, product_description: Optional[str]):
+    product = create_product_db(product_name=product_name, product_description=product_description)
     if product:
         return {"message": "Продукт успешно добавлен", "product": product}
     raise HTTPException(status_code=400, detail="Ошибка при добавлении продукта")
@@ -27,6 +27,13 @@ async def update_product_name_api(product_id: int, new_name: str):
     product = update_product_name_db(product_id, new_name)
     if product:
         return {"message": "Название обновлено", "product": product}
+    raise HTTPException(status_code=404, detail="Продукт не найден")
+
+@product_router.patch('/update_product_description_name/{product_id}')
+async def update_product_desc_name_api(product_id: int, new_desc_name: str):
+    product = update_prod_description_name_db(product_id, new_desc_name)
+    if product:
+        return {"message": "Описание обновлено", "product": product}
     raise HTTPException(status_code=404, detail="Продукт не найден")
 
 @product_router.delete('/delete_product/{product_id}')

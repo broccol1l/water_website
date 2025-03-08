@@ -25,6 +25,9 @@
                         <li>
                             <a href="javascript:void(0);" class="product-link"
                                data-name="{{ product.product_name }}"
+                               {% if product.product_description %}
+                                data-description="{{ product.product_description }}"
+                               {% endif %}
                                data-photos="{{ product.photos | map(attribute='product_photo_url') | join(',') }}">
                                 {{ product.product_name }}
                             </a>
@@ -39,7 +42,11 @@
                     {% for accessory in accessories %}
                         <li>
                             <a href="javascript:void(0);" class="accessory-link"
-                               data-name="{{ accessory.accessory_name }}">
+                               data-name="{{ accessory.accessory_name }}"
+                               {% if accessory.accessory_description %}
+                               data-description="{{ accessory.accessory_description }}"
+                               {% endif %}
+                               data-photos="{{ accessory.photos | map(attribute='accessory_photo_url') | join(',') }}">
                                 {{ accessory.accessory_name }}
                             </a>
                         </li>
@@ -55,12 +62,13 @@
 
     <!-- Модальное окно -->
     <div id="modalOverlay" class="modal-overlay"></div>
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close-btn">&times;</span>
-            <h2 id="modalTitle"></h2>
-            <div id="modalPhotos" class="modal-photos"></div>
-        </div>
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <div id="modalPhotos" class="modal-photos"></div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription" class="modal-description"></p>
     </div>
+</div>
 </body>
 </html>

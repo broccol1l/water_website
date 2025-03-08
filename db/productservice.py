@@ -3,9 +3,9 @@ from db.models import Product
 from sqlalchemy.orm import joinedload
 from db import get_db
 
-def create_product_db(product_name):
+def create_product_db(product_name, product_description):
     with next(get_db()) as db:
-        product = Product(product_name=product_name)
+        product = Product(product_name=product_name, product_description=product_description)
         db.add(product)
         db.commit()
         return True
@@ -23,6 +23,15 @@ def update_product_name_db(product_id: int, new_name: str):
         product = db.query(Product).filter_by(id=product_id).first()
         if product:
             product.product_name = new_name
+            db.commit()
+            db.refresh(product)
+        return product
+
+def update_prod_description_name_db(product_id: int, new_desc_name: str):
+    with next(get_db()) as db:
+        product = db.query(Product).filter_by(id=product_id).first()
+        if product:
+            product.product_description = new_desc_name
             db.commit()
             db.refresh(product)
         return product

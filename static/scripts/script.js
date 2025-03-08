@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalOverlay = document.getElementById("modalOverlay");
     const productModal = document.getElementById("productModal");
     const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription")
     const modalPhotos = document.getElementById("modalPhotos");
     const closeModal = document.getElementById("closeModal");
 
-    function openModal(title, photos) {
+    function openModal(title, photos, description) {
         modalTitle.textContent = title;
+        modalDescription.textContent = description
 
         // Очистка предыдущих фото
         modalPhotos.innerHTML = '';
@@ -56,10 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", (event) => {
             event.preventDefault();
             const title = link.getAttribute("data-name");
+            const description = link.getAttribute("data-description") || "";
             const photosAttr = link.getAttribute("data-photos");
             const photos = photosAttr ? photosAttr.split(',') : [];
 
-            openModal(title, photos);
+            openModal(title, photos, description);
         });
     });
 
