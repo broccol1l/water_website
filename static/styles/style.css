@@ -99,6 +99,7 @@
     .dropdown-menu li a {
         text-decoration: none;
         color: #337ab7;
+        border-radius: 8px;
         display: block;
         transition: 0.3s;
         padding: 8px 16px;
@@ -147,14 +148,38 @@
     transform: translate(-50%, -50%);
     background: white;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    border-radius: 10px;
     z-index: 1000;
-    max-width: 500px;
-    width: 90%;
+    width: 50%; /* Сделал шире */
+    max-width: 500px; /* Ограничение максимальной ширины */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.2);
+    color: #0077b6;
+}
+#modalTitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: blink 1s infinite alternate;
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
 .modal.active {
     display: block;
 }
@@ -176,19 +201,22 @@
 
 /* Описание продукта */
 .modal-description {
-    font-size: 1rem;
-    font-style: italic;
-    color: #555;
-    margin-top: 5px;
+    font-size: 18px;
+    color: gray;
+    margin-top: 10px;
 }
 
 /* Стили для изображений */
 .modal-photos {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
     margin-top: 15px;
+}
+
+.modal-photos img {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 5px;
 }
 
 .modal-photo {
@@ -196,6 +224,37 @@
     max-height: 200px;
     object-fit: cover;
     border-radius: 5px;
+}
+.photo-nav {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 50%; /* Делаем кнопки круглыми */
+    width: 30px; /* Фиксируем размер */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-photo {
+    left: 10px;
+}
+
+.next-photo {
+    right: 10px;
+}
+
+.photo-nav:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.2);
 }
 
     /* Медиа-запросы для адаптации */

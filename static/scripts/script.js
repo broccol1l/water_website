@@ -19,38 +19,60 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalOverlay = document.getElementById("modalOverlay");
     const productModal = document.getElementById("productModal");
     const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription")
+    const modalDescription = document.getElementById("modalDescription");
     const modalPhotos = document.getElementById("modalPhotos");
     const closeModal = document.getElementById("closeModal");
 
     function openModal(title, photos, description) {
         modalTitle.textContent = title;
-        modalDescription.textContent = description
+        modalDescription.textContent = description || "";
 
         // Очистка предыдущих фото
         modalPhotos.innerHTML = '';
 
-        // Добавление фотографий
-        if (photos && photos.length > 0) {
-            photos.forEach(photoUrl => {
-            const img = document.createElement('img');
-            // Ensure path starts with a slash if it doesn't already
-            img.src = photoUrl.startsWith('/') ? photoUrl : '/' + photoUrl;
-            img.alt = 'Фото продукта';
-            img.classList.add('modal-photo');
+        if (photos.length > 0) {
+            let currentPhotoIndex = 0;
+
+            // Создаем элемент изображения
+            const img = document.createElement("img");
+            img.src = photos[currentPhotoIndex].startsWith("/") ? photos[currentPhotoIndex] : "/" + photos[currentPhotoIndex];
+            img.alt = "Фото продукта";
+            img.classList.add("modal-photo");
             modalPhotos.appendChild(img);
-        });
+
+            // Создаем кнопки навигации, если фото больше 1
+            if (photos.length > 1) {
+                const prevBtn = document.createElement("button");
+                prevBtn.textContent = "<";
+                prevBtn.classList.add("photo-nav", "prev-photo");
+                prevBtn.addEventListener("click", () => {
+                    currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+                    img.src = photos[currentPhotoIndex].startsWith("/") ? photos[currentPhotoIndex] : "/" + photos[currentPhotoIndex];
+                });
+
+                const nextBtn = document.createElement("button");
+                nextBtn.textContent = ">";
+                nextBtn.classList.add("photo-nav", "next-photo");
+                nextBtn.addEventListener("click", () => {
+                    currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+                    img.src = photos[currentPhotoIndex].startsWith("/") ? photos[currentPhotoIndex] : "/" + photos[currentPhotoIndex];
+                });
+
+                modalPhotos.appendChild(prevBtn);
+                modalPhotos.appendChild(nextBtn);
+            }
         } else {
-            modalPhotos.innerHTML = '<p>Нет фото</p>';
+            modalPhotos.innerHTML = "<p>Нет фото</p>";
         }
 
-        modalOverlay.classList.add("active");
-        productModal.classList.add("active");
+        // Показ модального окна
+        modalOverlay.style.display = "block";
+        productModal.style.display = "block";
     }
 
     function closeModalHandler() {
-        modalOverlay.classList.remove("active");
-        productModal.classList.remove("active");
+        modalOverlay.style.display = "none";
+        productModal.style.display = "none";
     }
 
     // --- Обработчики кликов на продукцию и аксессуары ---
