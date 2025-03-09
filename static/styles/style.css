@@ -274,6 +274,12 @@
         background: transparent;
         padding: 20px;
     }
+    .banner-image {
+    user-select: none; /* Отключает выделение */
+    -webkit-user-drag: none; /* Отключает перетаскивание */
+    pointer-events: none; /* Игнорирует клики (если не нужен функционал кликов) */
+}
+
 
     .banner {
         position: absolute;
