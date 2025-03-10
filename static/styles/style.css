@@ -314,3 +314,25 @@
         height: 100%;
         object-fit: cover;
     }
+
+    .language-switcher {
+    display: flex;
+    gap: 5px;
+}
+
+.lang-btn {
+    background-color: transparent;
+    border: 1px solid #4a73b5; /* Цвет рамки, как у текста */
+    color: #4a73b5; /* Цвет текста */
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.lang-btn:hover {
+    background-color: #4a73b5; /* Цвет фона при наведении */
+    color: white; /* Цвет текста при наведении */
+}

@@ -9,12 +9,19 @@
     <header class="header">
         <div class="logo-container">
             <img src="/static/images/new_logotip.png" alt="Логотип" class="logo">
-
-        <div class="qr-container">
-            <img src="/static/images/qrcode_header.png" alt="QR Code" class="qr-code">
+            <div class="qr-container">
+                <img src="/static/images/qrcode_header.png" alt="QR Code" class="qr-code">
+            </div>
         </div>
-        </div>
 
+
+
+        <!-- Переключение языка -->
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="uz">UZ</button>
+        </div>
 
         <nav class="nav">
             <a href="javascript:void(0);" id="about">О компании</a>
@@ -22,17 +29,25 @@
             <a href="javascript:void(0);" id="contacts">Контакты</a>
 
             <div class="dropdown">
-                <a href="javascript:void(0);">Продукция</a>
+                <a href="javascript:void(0);" id="products">Продукция</a>
                 <ul class="dropdown-menu">
                     {% for product in products %}
                         <li>
                             <a href="javascript:void(0);" class="product-link"
-                               data-name="{{ product.product_name }}"
-                               {% if product.product_description %}
-                                data-description="{{ product.product_description }}"
+                               data-name-ru="{{ product.product_name_ru }}"
+                               data-name-en="{{ product.product_name_en }}"
+                               data-name-uz="{{ product.product_name_uz }}"
+                               {% if product.product_description_ru %}
+                                    data-description-ru="{{ product.product_description_ru }}"
+                               {% endif %}
+                               {% if product.product_description_en %}
+                                    data-description-en="{{ product.product_description_en }}"
+                               {% endif %}
+                               {% if product.product_description_uz %}
+                                    data-description-uz="{{ product.product_description_uz }}"
                                {% endif %}
                                data-photos="{{ product.photos | map(attribute='product_photo_url') | join(',') }}">
-                                {{ product.product_name }}
+                                {{ product.product_name_ru }}
                             </a>
                         </li>
                     {% endfor %}
@@ -40,17 +55,25 @@
             </div>
 
             <div class="dropdown">
-                <a href="javascript:void(0);">Аксессуары</a>
+                <a href="javascript:void(0);" id="accessories">Аксессуары</a>
                 <ul class="dropdown-menu">
                     {% for accessory in accessories %}
                         <li>
                             <a href="javascript:void(0);" class="accessory-link"
-                               data-name="{{ accessory.accessory_name }}"
-                               {% if accessory.accessory_description %}
-                               data-description="{{ accessory.accessory_description }}"
+                               data-name-ru="{{ accessory.accessory_name_ru }}"
+                               data-name-en="{{ accessory.accessory_name_en }}"
+                               data-name-uz="{{ accessory.accessory_name_uz }}"
+                               {% if accessory.accessory_description_ru %}
+                                    data-description-ru="{{ accessory.accessory_description_ru }}"
+                               {% endif %}
+                               {% if accessory.accessory_description_en %}
+                                    data-description-en="{{ accessory.accessory_description_en }}"
+                               {% endif %}
+                               {% if accessory.accessory_description_uz %}
+                                    data-description-uz="{{ accessory.accessory_description_uz }}"
                                {% endif %}
                                data-photos="{{ accessory.photos | map(attribute='accessory_photo_url') | join(',') }}">
-                                {{ accessory.accessory_name }}
+                                {{ accessory.accessory_name_ru }}
                             </a>
                         </li>
                     {% endfor %}
@@ -65,13 +88,13 @@
 
     <!-- Модальное окно -->
     <div id="modalOverlay" class="modal-overlay"></div>
-<div id="productModal" class="modal">
-    <div class="modal-content">
-        <span id="closeModal" class="close-btn">&times;</span>
-        <div id="modalPhotos" class="modal-photos"></div>
-        <h2 id="modalTitle"></h2>
-        <p id="modalDescription" class="modal-description"></p>
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <div id="modalPhotos" class="modal-photos"></div>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription" class="modal-description"></p>
+        </div>
     </div>
-</div>
 </body>
 </html>

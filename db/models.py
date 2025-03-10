@@ -6,8 +6,12 @@ class Product(Base):
     __tablename__ = "products"
 
     id = Column(Integer, autoincrement=True, primary_key=True)
-    product_name = Column(String, nullable=False)
-    product_description = Column(String, nullable=True)
+    product_name_ru = Column(String, nullable=False)
+    product_name_en = Column(String, nullable=False)
+    product_name_uz = Column(String, nullable=False)
+    product_description_ru = Column(String, nullable=True)
+    product_description_en = Column(String, nullable=True)
+    product_description_uz = Column(String, nullable=True)
 
     photos = relationship("ProductPhoto", back_populates="product", cascade="all, delete-orphan")
 
@@ -26,8 +30,12 @@ class Accessory(Base):
     __tablename__ = "accessories"
 
     id = Column(Integer, autoincrement=True, primary_key=True)
-    accessory_name = Column(String, nullable=False)
-    accessory_description = Column(String, nullable=True)
+    accessory_name_ru = Column(String, nullable=False)
+    accessory_name_en = Column(String, nullable=False)
+    accessory_name_uz = Column(String, nullable=False)
+    accessory_description_ru = Column(String, nullable=True)
+    accessory_description_en = Column(String, nullable=True)
+    accessory_description_uz = Column(String, nullable=True)
 
     photos = relationship("AccessoryPhoto", back_populates="accessory", cascade="all, delete-orphan")
 
