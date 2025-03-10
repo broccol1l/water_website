@@ -13,14 +13,12 @@
         100% { opacity: 1; }
     }
 
-    .header {
+.header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0; /* Убери лишние отступы */
+    align-items: center;
+    padding: 10px 20px;
     position: relative;
-    height: 60px; /* Подняли навигацию */
 }
 
     .logo {
@@ -32,7 +30,7 @@
     .logo-container {
     display: flex;
     align-items: center;
-
+    gap: 20px; /* Расстояние между логотипом и QR-кодом */
 }
 
     .qr-container {
@@ -41,17 +39,25 @@
     cursor: pointer;
     margin-right: 385px;
 }
-
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
     .qr-code {
-        width: 50px;
-        height: auto;
-        animation: blink 2s infinite; /* Мерцание */
-    }
+    width: 50px; /* Измени размер, если нужно */
+    height: auto;
+      animation: pulse 1.5s infinite ease-in-out;
+    cursor: pointer;
+}
 
     .nav {
-        display: flex;
-        gap: 20px;
-    }
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
 
     .nav a {
         text-decoration: none;
