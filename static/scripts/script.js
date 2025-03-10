@@ -1,5 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM загружен.");
+    // --- Открытие модального окна контактов ---
+    const contactsModalOverlay = document.getElementById("contactsModalOverlay")
+    const contactsModal = document.getElementById("contactsModal");
+    const closeContactsModal = document.getElementById("closeContactsModal");
+    const contactsButton = document.getElementById("contacts");
+
+    contactsButton.addEventListener("click", function () {
+        contactsModalOverlay.style.display = "block";
+        contactsModal.style.display = "block";
+    });
+
+    closeContactsModal.addEventListener("click", function () {
+        contactsModalOverlay.style.display = "none";
+        contactsModal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === contactsModal) {
+            contactsModal.style.display = "none";
+        }
+    });
+
     // --- Открытие QR-ссылки ---
     document.querySelector(".qr-container").addEventListener("click", function () {
         window.location.href = "https://links.dukduk.uz";

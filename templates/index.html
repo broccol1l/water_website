@@ -96,5 +96,21 @@
             <p id="modalDescription" class="modal-description"></p>
         </div>
     </div>
+    <!-- Модальное окно контактов -->
+        <div id="contactsModalOverlay" class="contacts-modal-overlay"></div>
+        <div id="contactsModal" class="contacts-modal">
+            <div class="contacts-modal-content">
+                <span id="closeContactsModal" class="close-btn">&times;</span>
+                <h2>Контакты</h2>
+                <p><strong>Корпоративный номер:</strong> 123123</p>
+                <p><strong>Колл-центр:</strong> 12313241</p>
+                <p><strong>Email:</strong> asdasd@gmail.com</p>
+                <p><strong>Локация:</strong> Ташкент</p>
+                <div id="map" class="contacts-map"></div>
+            </div>
+        </div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
 </body>
 </html>

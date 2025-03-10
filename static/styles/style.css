@@ -1,18 +1,19 @@
-    /* Общие стили */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f0f8ff; /* Светлый водяной цвет */
-    }
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Светлый водяной цвет */
+}
 
+/* Анимация мигания */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
 
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0.6; }
-        100% { opacity: 1; }
-    }
-
+/* Шапка */
 .header {
     display: flex;
     justify-content: space-between;
@@ -21,37 +22,42 @@
     position: relative;
 }
 
-    .logo {
-        width: 200px; /* Увеличил логотип */
-        height: auto;
-    }
+/* Логотип */
+.logo {
+    width: 200px; /* Увеличил логотип */
+    height: auto;
+}
 
-
-    .logo-container {
+.logo-container {
     display: flex;
     align-items: center;
     gap: 20px; /* Расстояние между логотипом и QR-кодом */
 }
 
-    .qr-container {
+/* QR-код */
+.qr-container {
     display: flex;
     align-items: center;
     cursor: pointer;
     margin-right: 385px;
 }
+
+/* Анимация пульсации */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
-    .qr-code {
-    width: 50px; /* Измени размер, если нужно */
+
+.qr-code {
+    width: 50px; /* Размер QR-кода */
     height: auto;
-      animation: pulse 1.5s infinite ease-in-out;
+    animation: pulse 1.5s infinite ease-in-out;
     cursor: pointer;
 }
 
-    .nav {
+/* Навигация */
+.nav {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -59,93 +65,92 @@
     gap: 20px;
 }
 
-    .nav a {
-        text-decoration: none;
-        color: #337ab7;
-        font-weight: bold;
-        transition: color 0.3s, text-shadow 0.3s;
-    }
+.nav a {
+    text-decoration: none;
+    color: #337ab7;
+    font-weight: bold;
+    transition: color 0.3s, text-shadow 0.3s;
+}
 
-    .nav a:hover {
-        color: #0056b3;
-        text-shadow: 0px 0px 8px rgba(0, 86, 179, 0.7);
-    }
+.nav a:hover {
+    color: #0056b3;
+    text-shadow: 0px 0px 8px rgba(0, 86, 179, 0.7);
+}
 
-    /* Dropdown-меню */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+/* Dropdown-меню */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-    .dropdown-menu {
-        visibility: hidden;
-        opacity: 0;
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.9);
-        min-width: 160px;
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        right: 0;
-        padding: 10px 0;
-        z-index: 10;
-        transition: visibility 0.2s, opacity 0.2s ease-in-out;
-    }
+.dropdown-menu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    right: 0;
+    padding: 10px 0;
+    z-index: 10;
+    transition: visibility 0.2s, opacity 0.2s ease-in-out;
+}
 
-    .dropdown:hover .dropdown-menu,
-    .dropdown-menu:hover {
-        visibility: visible;
-        opacity: 1;
-    }
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    visibility: visible;
+    opacity: 1;
+}
 
-    .dropdown-menu li {
-        padding: 8px 16px;
-        list-style: none;
-    }
+.dropdown-menu li {
+    padding: 8px 16px;
+    list-style: none;
+}
 
-    .dropdown-menu li a {
-        text-decoration: none;
-        color: #337ab7;
-        border-radius: 8px;
-        display: block;
-        transition: 0.3s;
-        padding: 8px 16px;
-    }
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #337ab7;
+    border-radius: 8px;
+    display: block;
+    transition: 0.3s;
+    padding: 8px 16px;
+}
 
-    .dropdown-menu li a:hover {
-        background-color: #f1f1f1;
-        color: #0056b3;
-    }
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    color: #0056b3;
+}
 
+/* Мобильное меню */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
 
-    /* Мобильное меню */
-    .menu-toggle {
+@media (max-width: 768px) {
+    nav {
         display: none;
-        font-size: 24px;
-        cursor: pointer;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
     }
 
-    @media (max-width: 768px) {
-        nav {
-            display: none;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.9);
-            position: absolute;
-            top: 60px;
-            right: 0;
-            width: 200px;
-            padding: 10px;
-        }
-
-        .menu-toggle {
-            display: block;
-        }
-
-        .show-menu {
-            display: flex;
-        }
+    .menu-toggle {
+        display: block;
     }
 
-    /* Стили для модального окна */
+    .show-menu {
+        display: flex;
+    }
+}
+
+/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -156,12 +161,14 @@
     padding: 20px;
     border-radius: 10px;
     z-index: 1000;
-    width: 50%; /* Сделал шире */
-    max-width: 500px; /* Ограничение максимальной ширины */
+    width: 50%;
+    max-width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Кнопка закрытия модального окна */
 .close-btn {
     position: absolute;
     top: 10px;
@@ -175,6 +182,8 @@
     transform: scale(1.2);
     color: #0077b6;
 }
+
+/* Заголовок модального окна */
 #modalTitle {
     font-family: 'Arial', sans-serif;
     font-size: 24px;
@@ -182,14 +191,22 @@
     text-transform: uppercase;
     animation: blink 1s infinite alternate;
 }
-@keyframes blink {
-    0% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-.modal.active {
-    display: block;
+
+/* Описание продукта */
+.modal-description {
+    font-size: 18px;
+    color: gray;
+    margin-top: 10px;
 }
 
+/* Изображения в модальном окне */
+.modal-photos {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Затемняющий фон */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -200,25 +217,9 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
-
-.modal-overlay.active {
+.modal.active, .modal-overlay.active {
     display: block;
 }
-
-/* Описание продукта */
-.modal-description {
-    font-size: 18px;
-    color: gray;
-    margin-top: 10px;
-}
-
-/* Стили для изображений */
-.modal-photos {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-}
-
 .modal-photos img {
     max-width: 100%;
     max-height: 220px;
@@ -231,6 +232,8 @@
     object-fit: cover;
     border-radius: 5px;
 }
+
+/* Навигация по фотографиям */
 .photo-nav {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -242,8 +245,8 @@
     top: 50%;
     transform: translateY(-50%);
     transition: background-color 0.3s, transform 0.3s;
-    border-radius: 50%; /* Делаем кнопки круглыми */
-    width: 30px; /* Фиксируем размер */
+    border-radius: 50%;
+    width: 30px;
     height: 30px;
     display: flex;
     align-items: center;
@@ -263,67 +266,67 @@
     transform: translateY(-50%) scale(1.2);
 }
 
-    /* Медиа-запросы для адаптации */
-    @media (max-width: 768px) {
-        .nav {
-            display: none;
-        }
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
 
-        .burger-menu {
-            display: block;
-        }
+    .burger-menu {
+        display: block;
     }
-    /* Banner */
-    .header {
-        position: relative;
-        z-index: 2;
-        background: transparent;
-        padding: 20px;
-    }
-    .banner-image {
-    user-select: none; /* Отключает выделение */
-    -webkit-user-drag: none; /* Отключает перетаскивание */
-    pointer-events: none; /* Игнорирует клики (если не нужен функционал кликов) */
 }
 
+/* Баннер */
+.header {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    padding: 20px;
+}
 
-    .banner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh; /* Покрывает весь экран */
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+/* Фоновое изображение баннера */
+.banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    .banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-    }
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
 
-    .banner-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
 
-    .language-switcher {
+/* Переключение языков */
+.language-switcher {
     display: flex;
     gap: 5px;
 }
 
 .lang-btn {
     background-color: transparent;
-    border: 1px solid #4a73b5; /* Цвет рамки, как у текста */
-    color: #4a73b5; /* Цвет текста */
+    border: 1px solid #4a73b5;
+    color: #4a73b5;
     padding: 5px 10px;
     font-size: 14px;
     font-weight: bold;
@@ -333,6 +336,86 @@
 }
 
 .lang-btn:hover {
-    background-color: #4a73b5; /* Цвет фона при наведении */
-    color: white; /* Цвет текста при наведении */
+    background-color: #4a73b5;
+    color: white;
 }
+
+/* Модальное окно контактов */
+/* Затемнение фона при открытии модального окна */
+.contacts-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.contacts-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Контент модального окна контактов */
+.contacts-modal-content {
+    position: relative;
+}
+
+
+/* Заголовок */
+.contacts-modal h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Текст */
+.contacts-modal p {
+    font-size: 16px;
+    color: #444;
+    margin: 5px 0;
+    text-align: left;
+}
+
+/* Выделение важных данных */
+.contacts-modal p strong {
+    color: #0077b6;
+}
+
+/* Карта */
+.contacts-map {
+    width: 100%;
+    height: 220px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background: #ddd;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
