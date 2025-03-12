@@ -136,12 +136,37 @@ document.addEventListener("DOMContentLoaded", function () {
         modalDescription.textContent = description || "";
 
         modalPhotos.innerHTML = "";
+
         if (photos.length > 0) {
             let currentPhotoIndex = 0;
+
             const img = document.createElement("img");
-            img.src = photos[currentPhotoIndex];
+            img.src = photos[currentPhotoIndex].startsWith("/") ? photos[currentPhotoIndex] : "/" + photos[currentPhotoIndex];
+            img.alt = "Фото продукта";
             img.classList.add("modal-photo");
             modalPhotos.appendChild(img);
+
+            // Создаем кнопки навигации, если фото больше 1
+            if (photos.length > 1) {
+                const prevBtn = document.createElement("button");
+                prevBtn.textContent = "<";
+                prevBtn.classList.add("photo-nav", "prev-photo");
+                prevBtn.addEventListener("click", () => {
+                    currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+                    img.src = photos[currentPhotoIndex].startsWith("/") ? photos[currentPhotoIndex] : "/" + photos[currentPhotoIndex];
+                });
+
+                const nextBtn = document.createElement("button");
+                nextBtn.textContent = ">";
+                nextBtn.classList.add("photo-nav", "next-photo");
+                nextBtn.addEventListener("click", () => {
+                    currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+                    img.src = photos[currentPhotoIndex].startsWith("/") ? photos[currentPhotoIndex] : "/" + photos[currentPhotoIndex];
+                });
+
+                modalPhotos.appendChild(prevBtn);
+                modalPhotos.appendChild(nextBtn);
+            }
         } else {
             modalPhotos.innerHTML = "<p>Нет фото</p>";
         }
