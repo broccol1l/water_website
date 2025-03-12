@@ -25,7 +25,7 @@
 
         <nav class="nav">
             <a href="javascript:void(0);" id="about">О компании</a>
-            <a href="javascript:void(0);" id="payment">Способы оплаты</a>
+            <a href="javascript:void(0);" id="payment">Оплата</a>
             <a href="javascript:void(0);" id="contacts">Контакты</a>
 
             <div class="dropdown">
@@ -82,9 +82,17 @@
         </nav>
     </header>
 
-    <section class="banner">
-        <img src="static/images/banner.jpg" class="banner-image">
-    </section>
+<section class="banner">
+    <img src="static/images/banner.jpg" class="banner-image">
+    <div class="banner-content">
+        <h1>SEROB WATER</h1>
+        <p class="subtitle">Чистая вода для вашего <span class="highlight">Дома</span> и <span class="highlight">Офиса</span></p>
+        <p class="text">Закажите воду через наш <span class="link">Телеграм-бот</span></p>
+        <a href="https://t.me/serobsuvbot" class="order-button">Заказать</a>
+    </div>
+</section>
+
+
 
     <!-- Модальное окно -->
     <div id="modalOverlay" class="modal-overlay"></div>
@@ -97,20 +105,36 @@
         </div>
     </div>
     <!-- Модальное окно контактов -->
-        <div id="contactsModalOverlay" class="contacts-modal-overlay"></div>
-        <div id="contactsModal" class="contacts-modal">
-            <div class="contacts-modal-content">
-                <span id="closeContactsModal" class="close-btn">&times;</span>
-                <h2>Контакты</h2>
-                <p><strong>Корпоративный номер:</strong> 123123</p>
-                <p><strong>Колл-центр:</strong> 12313241</p>
-                <p><strong>Email:</strong> asdasd@gmail.com</p>
-                <p><strong>Локация:</strong> Ташкент</p>
-                <div id="map" class="contacts-map"></div>
-            </div>
-        </div>
+        <!-- Модальное окно контактов -->
+<div id="contactsModalOverlay" class="contacts-modal-overlay"></div>
+<div id="contactsModal" class="contacts-modal">
+    <div class="contacts-modal-content">
+        <span id="closeContactsModal" class="close-btn-contact">&times;</span>
+        <h2 id="contactsTitle">Контакты</h2>
+        <p id="contactsCorporate"><strong>Корпоративный номер:</strong> +998 (95) 963-02-02</p>
+        <p id="contactsCallCenter"><strong>Колл-центр:</strong> +998 (55) 512-02-02</p>
+        <p id="contactsEmail"><strong>Email:</strong> info@serobsuv.uz</p>
+        <p id="contactsLocation"><strong>Локация:</strong> <span id="contactsLocationValue">ул. Мусамухамедова, городской посёлок Салар, Кибрайский район, Ташкентская область</span></p>
+        <div id="map" class="contacts-map"></div>
+    </div>
+</div>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script>
+    function initMap() {
+        var map = new ymaps.Map("map", {
+            center: [41.3648, 69.359631], // Координаты
+            zoom: 15
+        });
 
+        var placemark = new ymaps.Placemark([41.3648, 69.359631], {
+            balloonContent: "Мы здесь!"
+        });
+
+        map.geoObjects.add(placemark);
+    }
+
+    ymaps.ready(initMap);
+</script>
 </body>
 </html>

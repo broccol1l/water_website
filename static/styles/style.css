@@ -165,9 +165,18 @@ body {
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeInOld 0.3s ease-in-out;
 }
-
+@keyframes fadeInOld {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
 /* Кнопка закрытия модального окна */
 .close-btn {
     position: absolute;
@@ -177,7 +186,19 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
 }
+.close-btn-contact {
+    position: absolute;
+    top: -30px;
+    right: -10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
 
+.close-btn-contact:hover {
+    transform: scale(1.2);
+    color: #0077b6;
+}
 .close-btn:hover {
     transform: scale(1.2);
     color: #0077b6;
@@ -312,9 +333,10 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    user-select: none;
-    -webkit-user-drag: none;
-    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 /* Переключение языков */
@@ -368,7 +390,7 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
     font-family: Arial, sans-serif;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeInOld 0.3s ease-in-out;
 }
 
 /* Контент модального окна контактов */
@@ -383,6 +405,9 @@ body {
     color: #333;
     margin-bottom: 15px;
     font-weight: bold;
+}
+.content-modal span strong {
+color: #0077b6;
 }
 
 /* Текст */
@@ -419,3 +444,98 @@ body {
     }
 }
 
+.banner-content {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);
+    padding: 40px 50px;
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    color: #1a1a1a;
+    position: absolute;
+    top: 45%;
+    animation: fadeIn 1s ease-in-out;
+    left: 5%;
+    transform: translateY(-50%);
+}
+
+.banner-content h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #001F4D; /* Еще темнее */
+
+    /* Градиентный текст */
+    background: linear-gradient(135deg, #003580, #0077cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Добавил эффект стекла */
+    text-shadow: 2px 2px 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Текст */
+.banner-content p {
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Кнопка */
+.order-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #004aad, #00aaff);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+/* Ховер-кнопка */
+.order-button:hover {
+    box-shadow: 0px 0px 20px rgba(0, 170, 255, 0.7);
+    transform: scale(1.07);
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-55%); /* Поднимаем выше начальную позицию */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: #2B5DB6;
+    font-weight: bold;
+}
+
+.link {
+    color: #2B5DB6;
+    font-weight: bold;
+
+}

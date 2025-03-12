@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+
     // --- Открытие QR-ссылки ---
     document.querySelector(".qr-container").addEventListener("click", function () {
         window.location.href = "https://links.dukduk.uz";
@@ -43,21 +44,39 @@ document.addEventListener("DOMContentLoaded", function () {
             "payment": "Оплата",
             "contacts": "Контакты",
             "products": "Продукция",
-            "accessories": "Аксессуары"
+            "accessories": "Аксессуары",
+            "contactsTitle": "Контакты",
+            "contactsCorporate": "Корпоративный номер:",
+            "contactsCallCenter": "Колл-центр:",
+            "contactsEmail": "Email:",
+            "contactsLocation": "Локация:",
+            "contactsLocationValue": "ул. Мусамухамедова, городской посёлок Салар, Кибрайский район, Ташкентская область"
         },
         "en": {
             "about": "About",
             "payment": "Payment",
             "contacts": "Contacts",
             "products": "Products",
-            "accessories": "Accessories"
+            "accessories": "Accessories",
+            "contactsTitle": "Contacts",
+            "contactsCorporate": "Corporate number:",
+            "contactsCallCenter": "Call center:",
+            "contactsEmail": "Email:",
+            "contactsLocation": "Location:",
+            "contactsLocationValue": "Musamukhamedova St., Salar town, Kibray district, Tashkent region"
         },
         "uz": {
             "about": "Kompaniya haqida",
             "payment": "To'lov",
             "contacts": "Kontaktlar",
             "products": "Mahsulotlar",
-            "accessories": "Aksessuarlar"
+            "accessories": "Aksessuarlar",
+            "contactsTitle": "Kontaktlar",
+            "contactsCorporate": "Korporativ raqam:",
+            "contactsCallCenter": "Call-markaz:",
+            "contactsEmail": "Email:",
+            "contactsLocation": "Manzil:",
+            "contactsLocationValue": "Musamuxamedova ko'chasi, Salar shaharchasi, Kibray tumani, Toshkent viloyati"
         }
     };
 
@@ -83,6 +102,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".accessory-link").forEach(link => {
             link.textContent = link.getAttribute(`data-name-${lang}`);
         });
+        // Обновляем текст в модальном окне контактов
+    document.getElementById("contactsTitle").textContent = translations[lang]["contactsTitle"];
+    document.getElementById("contactsCorporate").innerHTML = `<strong>${translations[lang]["contactsCorporate"]}</strong> +998 (95) 963-02-02`;
+    document.getElementById("contactsCallCenter").innerHTML = `<strong>${translations[lang]["contactsCallCenter"]}</strong> +998 (55) 512-02-02`;
+    document.getElementById("contactsEmail").innerHTML = `<strong>${translations[lang]["contactsEmail"]}</strong> info@serobsuv.uz`;
+
+    // ✅ Теперь обновляется заголовок и сам адрес
+    document.getElementById("contactsLocation").innerHTML = `<strong>${translations[lang]["contactsLocation"]}</strong> <span id="contactsLocationValue">${translations[lang]["contactsLocationValue"]}</span>`;
+
     }
 
     // --- Переключение языка ---
