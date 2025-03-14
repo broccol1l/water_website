@@ -542,3 +542,126 @@ color: #0077b6;
     font-weight: bold;
 
 }
+
+/* About water section */
+.water-info {
+    text-align: center;
+    margin-top: 575px; /* Отступ от баннера */
+    padding: 50px 0; /* Внутренний отступ */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(224, 247, 250, 0.6));
+    width: 100%;
+}
+
+.water-info .container {
+    max-width: 1200px; /* Увеличено с 900px */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.water-info h2 {
+    font-size: 2.2rem;
+    color: #004c99; /* Сделан темнее для лучшей читаемости */
+    margin-bottom: 15px;
+}
+
+.water-info p {
+    font-size: 1.2rem;
+    color: #222; /* Сделан темнее для лучшей читаемости */
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.water-features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap; /* Отключает перенос */
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+}
+
+.feature img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    font-size: 1.3rem; /* Немного увеличен */
+    color: #004c99;
+    margin-bottom: 5px;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.water-description {
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 1000px; /* Увеличено с 800px */
+    margin: 40px auto;
+    backdrop-filter: blur(8px);
+}
+
+.water-description h3 {
+    color: #004c99;
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.water-description ul {
+    list-style: none;
+    padding: 0;
+}
+
+.water-description li {
+    background: linear-gradient(135deg, rgba(173, 216, 230, 0.3), rgba(224, 247, 250, 0.6));
+    border-left: 5px solid #004c99;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 1.2em;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.water-description li:hover {
+    background: rgba(200, 230, 250, 0.8);
+    transform: translateY(-2px);
+}
+
+.water-description strong {
+    color: #004c99;
+}
+
+.water-description a {
+    color: #0077cc;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.water-description a:hover {
+    color: #00aaff;
+    text-decoration: underline;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
