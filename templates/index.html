@@ -31,7 +31,20 @@
             <div class="dropdown">
                 <a href="javascript:void(0);" id="products">Продукция</a>
                 <ul class="dropdown-menu">
+                    {% set water_products = [] %}
+                    {% set other_products = [] %}
+
                     {% for product in products %}
+                        {% if product.product_name_ru.startswith('Вода ') %}
+                            {% set volume = namespace(value=100) %}
+                            {% set volume_text = product.product_name_ru.split('Вода ')[1].split(' л')[0] %}
+                            {% set volume.value = volume_text|float %}
+                            {% set _ = water_products.append((volume.value, product)) %}
+                        {% else %}
+                            {% set _ = other_products.append(product) %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for volume, product in water_products|sort %}
                         <li>
                             <a href="javascript:void(0);" class="product-link"
                                data-name-ru="{{ product.product_name_ru }}"

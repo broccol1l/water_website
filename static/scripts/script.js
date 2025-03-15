@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM загружен.");
+
     // --- Открытие модального окна контактов ---
     const contactsModalOverlay = document.getElementById("contactsModalOverlay")
     const contactsModal = document.getElementById("contactsModal");
