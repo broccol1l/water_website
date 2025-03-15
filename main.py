@@ -1,5 +1,4 @@
 import logging
-import re
 
 from fastapi import FastAPI, Request, Response
 
@@ -33,19 +32,14 @@ app.add_middleware(
 )
 logger = logging.getLogger("uvicorn.access")
 
-
 class EndpointFilter(logging.Filter):
     def filter(self, record):
         return "/hybridaction/zybTrackerStatisticsAction" not in record.getMessage()
 
-
 logger.addFilter(EndpointFilter())
-
-
 @app.get("/hybridaction/zybTrackerStatisticsAction")
 async def ignored_endpoint():
     return Response(status_code=404)
-
 
 app.include_router(product_router)
 app.include_router(product_photo_router)
@@ -63,36 +57,9 @@ async def index(request: Request):
     products = await get_all_products_api()
     accessories = await get_all_accessories_api()
 
-    # Filter out only water products and sort them
-    water_products = []
-    other_products = []
-
-    for product in products:
-        product_name = product.get('product_name_ru', '')
-        if product_name.startswith('Вода '):
-            # Use regex to extract the volume
-            match = re.search(r'Вода (\d+[.,]?\d*) л', product_name)
-            if match:
-                volume_str = match.group(1).replace(',', '.')
-                try:
-                    volume = float(volume_str)
-                    product['volume'] = volume  # Store the volume for sorting
-                    water_products.append(product)
-                    continue
-                except ValueError:
-                    pass
-        # If not a water product or couldn't extract volume
-        other_products.append(product)
-
-    # Sort water products by volume
-    sorted_water_products = sorted(water_products, key=lambda x: x.get('volume', float('inf')))
-
-    # Combine sorted water products with other products
-    sorted_products = sorted_water_products + other_products
-
     return templates.TemplateResponse(
         "index.html",
-        {"request": request, "products": sorted_products, "accessories": accessories}
+        {"request": request, "products": products, "accessories": accessories}
     )
 
 

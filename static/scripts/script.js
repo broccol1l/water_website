@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- Переводы интерфейса ---
     const translations = {
         "ru": {
+            "main-title": "SEROB ВОДА",
+            "subtitle": "Чистая вода для вашего {highlight1}",
+            "highlight1": "Дома и Офиса",
+            "text": "Закажите воду через наш {link}",
+            "link": "Телеграм-бот",
             "about": "О компании",
             "payment": "Оплата",
             "contacts": "Контакты",
@@ -54,6 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "contactsLocationValue": "ул. Мусамухамедова, городской посёлок Салар, Кибрайский район, Ташкентская область"
         },
         "en": {
+            "main-title": "SEROB WATER",
+            "subtitle": "Pure water for your {highlight1}",
+            "highlight1": "Home and Office",
+            "text": "Order water via our {link}",
+            "link": "Telegram bot",
             "about": "About",
             "payment": "Payment",
             "contacts": "Contacts",
@@ -67,6 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
             "contactsLocationValue": "Musamukhamedova St., Salar town, Kibray district, Tashkent region"
         },
         "uz": {
+            "main-title": "SEROB SUV",
+            "subtitle": "Toza suv sizning {highlight1}",
+            "highlight1": "Uyingiz va ofisingiz uchun",
+            "text": "Buyurtma berish uchun bizning {link}",
+            "link": "Telegram-botimizdan foydalaning",
             "about": "Kompaniya haqida",
             "payment": "To'lov",
             "contacts": "Kontaktlar",
@@ -88,7 +103,18 @@ document.addEventListener("DOMContentLoaded", function () {
         currentLang = lang;
         localStorage.setItem("lang", lang);
 
+
+        const linkText = translations[lang]["link"];
+        const textWithPlaceholder = translations[lang]["text"].replace("{link}", `<span class="link" id="link">${linkText}</span>`);
+        document.getElementById("text").innerHTML = textWithPlaceholder;
+
+        const highlight1Text = translations[lang]["highlight1"];
+        const subtitleWithPlaceholder = translations[lang]["subtitle"].replace("{highlight1}", `<span class="highlight" id="highlight1">${highlight1Text}</span>`);
+        document.getElementById("subtitle").innerHTML = subtitleWithPlaceholder;
+
+
         // Обновляем текст ссылок в меню
+        document.getElementById("main-title").textContent = translations[lang]["main-title"];
         document.getElementById("about").textContent = translations[lang]["about"];
         document.getElementById("payment").textContent = translations[lang]["payment"];
         document.getElementById("contacts").textContent = translations[lang]["contacts"];
