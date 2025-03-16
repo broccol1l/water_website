@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- Переводы интерфейса ---
     const translations = {
         "ru": {
-            "water-desc-h3": "Почему выбирают SEROB WATER?",
+            "water-desc-h3": "Почему выбирают SEROB ВОДУ?",
             "water-desc-li1": "{water-desc-li1s} многократная фильтрация без вредных примесей.",
             "water-desc-li2": "{water-desc-li2s} без посторонних запахов и примесей.",
             "water-desc-li3": "{water-desc-li3s} соответствует международным стандартам качества.",
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "water-desc-li3s": "Безопасность:",
             "water-desc-li4s": "Доставка на дом и в офис:",
             "water-h2": "Кристальная чистота в каждой капле",
-            "water-p": "Вода SEROB WATER – это высококачественная питьевая вода, прошедшая многоступенчатую очистку и обогащённая полезными минералами. Мы заботимся о вашем здоровье и предлагаем только лучший продукт.",
+            "water-p": "Вода SEROB – это высококачественная питьевая вода, прошедшая многоступенчатую очистку и обогащённая полезными минералами. Мы заботимся о вашем здоровье и предлагаем только лучший продукт.",
             "water-h3-1": "Идеальная чистота",
             "water-p-1": "Удаляем 99.9% примесей и бактерий, сохраняя природную свежесть.",
             "water-h3-2": "Оптимальный баланс",
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "contactsLocationValue": "Musamukhamedova St., Salar town, Kibray district, Tashkent region"
         },
         "uz": {
-            "water-desc-h3": "Nega SEROB WATERni tanlashadi?",
+            "water-desc-h3": "Nega SEROB SUV tanlashadi?",
             "water-desc-li1": "{water-desc-li1s} zararli aralashmalarsiz ko‘p bosqichli filtratsiya.",
             "water-desc-li2": "{water-desc-li2s} begona hid va qo‘shimchalarsiz.",
             "water-desc-li3": "{water-desc-li3s} xalqaro sifat standartlariga mos.",

@@ -150,7 +150,6 @@ body {
     }
 }
 
-/* Модальное окно */
 .modal {
     display: none;
     position: fixed;
@@ -225,6 +224,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+
 }
 
 /* Затемняющий фон */
@@ -243,7 +243,7 @@ body {
 }
 .modal-photos img {
     max-width: 100%;
-    max-height: 220px;
+    max-height: 350px;
     border-radius: 5px;
 }
 
