@@ -41,7 +41,7 @@ def update_prod_description_name_db(product_id: int, new_desc_name: str, lang: s
     with next(get_db()) as db:
         product = db.query(Product).filter_by(id=product_id).first()
         if product:
-            field_name = f"description_name_{lang}"
+            field_name = f"product_description_{lang}"
             if hasattr(product, field_name):  # Проверяем, существует ли поле
                 setattr(product, field_name, new_desc_name)
                 db.commit()

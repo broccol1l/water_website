@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f8ff; /* Светлый водяной цвет */
 }
 
 /* Анимация мигания */
@@ -18,12 +17,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 20px 0;
+    z-index: 10;
     position: relative;
 }
 
 /* Логотип */
 .logo {
+    max-width: 100%;
     width: 200px; /* Увеличил логотип */
     height: auto;
 }
@@ -308,7 +309,7 @@ body {
 
 /* Фоновое изображение баннера */
 .banner {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -319,6 +320,9 @@ body {
     align-items: center;
 }
 
+.banner + .water-info {
+    margin-top: 0; /* Убираем фиксированные отступы */
+}
 .banner::before {
     content: "";
     position: absolute;
@@ -449,7 +453,6 @@ color: #0077b6;
 
 .banner-content {
     background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
     padding: 40px 50px;
     border-radius: 15px;
     text-align: left;
@@ -457,7 +460,7 @@ color: #0077b6;
     max-width: 600px;
     color: #1a1a1a;
     position: absolute;
-    top: 45%;
+    top: 37%;
     animation: fadeIn 1s ease-in-out;
     left: 5%;
     transform: translateY(-50%);
