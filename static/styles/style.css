@@ -4,6 +4,10 @@ body {
     margin: 0;
     padding: 0;
 }
+html, body {
+    overflow-x: hidden; /* Отключает горизонтальный скролл */
+    max-width: 100%;
+}
 
 /* Анимация мигания */
 @keyframes blink {
@@ -123,33 +127,6 @@ body {
     color: #0056b3;
 }
 
-/* Мобильное меню */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    nav {
-        display: none;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.9);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 10px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .show-menu {
-        display: flex;
-    }
-}
 
 .modal {
     display: none;
@@ -613,7 +590,6 @@ color: #0077b6;
     text-align: center;
     max-width: 1000px; /* Увеличено с 800px */
     margin: 40px auto;
-    backdrop-filter: blur(8px);
 }
 
 .water-description h3 {
@@ -668,3 +644,447 @@ color: #0077b6;
     height: 20%;
     background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
 }
+/* About company */
+.about-company {
+    padding: 1px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.85), rgba(224, 247, 250, 0.6));
+
+}
+.about-company h1 {
+    color: #0b0a7a;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-company h2 {
+    color: #0b0a7a;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-company p {
+    font-size: 20px;
+    line-height: 1.9;
+    max-width: 1000px;
+    margin: 0 auto 25px;
+
+}
+
+.values-list {
+    list-style: none;
+    padding: 0;
+    margin: 25px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.values-list li {
+    font-size: 20px;
+    line-height: 2;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.values-list li::before {
+    position: absolute;
+    left: 0;
+    color: #00AEEF;
+    font-size: 22px;
+}
+
+.final-message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0b0a7a;
+    margin-top: 45px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-message {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 18px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Доставка */
+.delivery {
+    position: relative;
+    padding: 100px 20px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.6) 10%, rgba(255, 255, 255, 0) 40%),
+                url('/static/images/water-dostavka1.png') center/cover no-repeat;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Перемещаем текст вниз */
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.delivery::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.delivery h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.delivery p {
+    font-size: 22px;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.delivery .delivery-hours {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.delivery .free-delivery {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Call-centre */
+.call-centre {
+    padding: 50px 5%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(224, 247, 250, 0.6));
+}
+
+.call-centre-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* Фото */
+.call-centre-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Текст */
+.call-centre-text {
+    max-width: 600px;
+}
+
+.call-centre-text h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #0b0a7a;
+    margin-bottom: 20px;
+}
+
+.call-centre-text p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* Payment */
+.payment {
+    padding: 50px 5%;
+    text-align: center;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(224, 247, 250, 0.7));
+}
+
+.payment h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #0b0a7a;
+    margin-bottom: 30px;
+}
+
+/* Контейнер для изображений */
+.payment-options {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Стили для блоков оплаты */
+.payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 220px;
+}
+
+/* Стили для изображений */
+.payment-option img {
+    width: 220px;  /* Увеличил размер */
+    height: 220px; /* Одинаковая высота */
+    object-fit: cover; /* Обрезка без искажений */
+    border-radius: 15px; /* Сделал углы плавнее */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Анимация наведения */
+.payment-option img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Ссылки */
+.payment-option a {
+    display: block;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 15px 0;
+    margin-top: 15px;
+    color: white;
+    background-color: #0b0a7a;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Эффект наведения */
+.payment-option a:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .payment-options {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .payment-option {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .payment-option img {
+        width: 100%;
+        height: auto;
+    }
+
+    .payment-option a {
+        font-size: 22px;
+        padding: 12px 0;
+    }
+    .payment-option img:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+}
+footer {
+    background-color: #050533;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer-info, .footer-payments, .footer-social, .footer-copy {
+    margin: 10px;
+}
+
+footer a {
+    color: #7aa7d9;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .call-centre-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .call-centre-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .call-centre-text h2 {
+        font-size: 32px;
+    }
+
+    .call-centre-text p {
+        font-size: 18px;
+    }
+}
+
+
+/* Бургер-меню */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+}
+
+.burger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #337ab7;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+/* Анимация бургера */
+.burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Стили для мобильного меню */
+@media (max-width: 1100px) {
+    .dropdown-menu {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .dropdown-menu.open {
+        opacity: 1;
+        max-height: 300px; /* Ограничиваем высоту */
+        overflow-y: auto; /* Добавляем вертикальный скролл */
+    }
+
+    /* Улучшаем вид скролла */
+    .dropdown-menu.open::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .dropdown-menu.open::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
+
+    .dropdown-menu.open::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Гарантируем, что следующий список будет под предыдущим */
+    .dropdown-menu {
+        position: relative;
+    }
+
+    .dropdown-menu .dropdown {
+        position: static;
+    }
+
+
+    .burger {
+        display: flex;
+    }
+
+    .nav {
+    position: fixed; /* Фиксируем меню поверх страницы */
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, 0%); /* Центрируем по горизонтали и вертикали */
+    width: 100vw; /* Занимает всю ширину экрана */
+    height: 100vh; /* Делаем высоту динамической */
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 100;
+}
+
+
+
+    .nav a {
+        color: white;
+        font-size: 24px;
+    }
+
+    .nav.open {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 100;
+}
+
+.nav.open a {
+    color: white;
+    font-size: 24px;
+}
+
+/* Блокировка прокрутки */
+body.no-scroll {
+    overflow: hidden;
+}
+
+}
+
+@keyframes burgerAnimation {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+

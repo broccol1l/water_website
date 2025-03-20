@@ -1,6 +1,69 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM загружен.");
 
+    function moveLanguageSwitcher() {
+        const nav = document.querySelector(".nav");
+        const langSwitcher = document.querySelector(".language-switcher");
+        const header = document.querySelector(".header");
+
+        if (window.innerWidth <= 1100 && langSwitcher.parentElement !== nav) {
+            nav.appendChild(langSwitcher);
+        } else if (window.innerWidth > 1100 && langSwitcher.parentElement !== header) {
+            header.appendChild(langSwitcher);
+        }
+    }
+
+    moveLanguageSwitcher(); // Вызываем при загрузке
+    window.addEventListener("resize", moveLanguageSwitcher);
+
+    moveLanguageSwitcher();
+    window.addEventListener("resize", moveLanguageSwitcher);
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav");
+    const body = document.body;
+
+    // Бургер-меню
+    burger.addEventListener("click", function () {
+        nav.classList.toggle("open");
+        burger.classList.toggle("active");
+        body.classList.toggle("no-scroll");
+    });
+
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll(".nav a").forEach(link => {
+        link.addEventListener("click", () => {
+            if (!link.closest(".dropdown")) {
+                nav.classList.remove("open");
+                burger.classList.remove("active");
+                body.classList.remove("no-scroll");
+            }
+        });
+    });
+
+    // Логика для dropdown в мобильной версии
+    if (window.innerWidth <= 1100) {
+        document.querySelectorAll(".dropdown > a").forEach(dropdownToggle => {
+            dropdownToggle.addEventListener("click", (e) => {
+                e.preventDefault(); // Предотвращаем переход по ссылке
+                const dropdownMenu = dropdownToggle.nextElementSibling;
+
+                // Если кликнули на пункт, который уже открыт — просто закроем его
+                if (dropdownMenu.classList.contains("open")) {
+                    dropdownMenu.classList.remove("open");
+                    return;
+                }
+
+                // Закрываем все другие открытые меню
+                document.querySelectorAll(".dropdown-menu.open").forEach(menu => {
+                    menu.classList.remove("open");
+                });
+
+                // Открываем только нужное меню
+                dropdownMenu.classList.add("open");
+            });
+        });
+    }
+
     // --- Открытие модального окна контактов ---
     const contactsModalOverlay = document.getElementById("contactsModalOverlay")
     const contactsModal = document.getElementById("contactsModal");
@@ -33,11 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- Прокрутка страницы ---
     document.querySelector("#payment").addEventListener("click", function () {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        document.querySelector(".payment").scrollIntoView({ behavior: "smooth" });
     });
 
     document.querySelector("#about").addEventListener("click", function () {
-        document.getElementById("about-section").scrollIntoView({ behavior: "smooth" });
+        document.querySelector(".about-company").scrollIntoView({ behavior: "smooth" })
     });
 
     // --- Переводы интерфейса ---
