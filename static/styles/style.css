@@ -855,6 +855,15 @@ p {
     font-size: 24px;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
+    background: rgba(0, 0, 0, 0.1); /* Легкая прозрачность */
+    color: #333;
+    border: none;
+    border-radius: 20%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .close-btn-contact {
     position: absolute;
@@ -871,7 +880,8 @@ p {
 }
 .close-btn:hover {
     transform: scale(1.2);
-    color: #0077b6;
+    background: #0077b6;
+    color: white;
 }
 
 /* Заголовок модального окна */
@@ -937,9 +947,9 @@ p {
     top: 50%;
     transform: translateY(-50%);
     transition: background-color 0.3s, transform 0.3s;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    border-radius: 40%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1694,7 +1704,6 @@ footer a:hover {
 
 /* Стили для мобильного меню */
 @media (max-width: 1100px) {
-
     .dropdown-menu {
         opacity: 0;
         max-height: 0;
@@ -1754,7 +1763,7 @@ footer a:hover {
     justify-content: center;
     gap: 20px;
     z-index: 100;
-}
+    }
 
 
 
@@ -1778,19 +1787,38 @@ footer a:hover {
     justify-content: center;
     gap: 20px;
     z-index: 100;
-}
+    }
 
 
-.nav.open a {
-    color: #2B5DB6;
-    font-weight: bold; /* Немного жирный текст */
-    font-size: 24px;
+    .nav.open a {
+        color: #2B5DB6;
+        font-weight: bold; /* Немного жирный текст */
+        font-size: 24px;
+    }
+
+    /* Блокировка прокрутки */
+    body.no-scroll {
+        overflow: hidden;
+     }
+
+    .close-btn {
+    position: absolute;
+    top: 10 px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1); /* Легкая прозрачность */
+    color: #333;
+    border: none;
+    border-radius: 20%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Блокировка прокрутки */
-body.no-scroll {
-    overflow: hidden;
-}
 
 }
 
@@ -1808,7 +1836,7 @@ body.no-scroll {
     }
 
     .logo {
-        width: 150px;
+        width: 170px;
     }
 
     .logo-container {
@@ -1820,28 +1848,32 @@ body.no-scroll {
     }
 
     .qr-code {
-        width: 40px;
+        width: 50px;
     }
 
     .banner-content {
-        width: 90%;
-        padding: 25px 20px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: none;
+        padding: 40px 50px;
+        max-width: 60%;
+        max-height: 60%;
+        width: 450px;
+        height: 270px;
+        top: 37%;
+        animation: fadeIn 1s ease-in-out;
+        left: 5%;
+        transform: translateY(-50%);
     }
 
     .banner-content h1 {
-        font-size: 28px;
+        font-size: 36px;
     }
 
     .banner-content p {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .order-button {
         padding: 10px 20px;
-        font-size: 16px;
+        font-size: 24px;
     }
 
     .water-info {
@@ -1894,9 +1926,9 @@ body.no-scroll {
     }
 
     .photo-nav {
-        width: 25px;
-        height: 25px;
-        font-size: 14px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
 
     .contacts-modal h2 {
@@ -1911,23 +1943,38 @@ body.no-scroll {
         height: 180px;
     }
 
-    .close-btn, .close-btn-contact {
-        font-size: 20px;
-    }
+    .close-btn {
+    position: absolute;
+    top: 10 px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1); /* Легкая прозрачность */
+    color: #333;
+    border: none;
+    border-radius: 20%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
 }
 
 /* Адаптация для самых маленьких экранов (до 420px) */
 @media (max-width: 420px) {
+
     .header {
         padding: 10px 5px;
     }
 
     .logo {
-        width: 120px;
+        width: 180px;
     }
 
     .qr-code {
-        width: 35px;
+        width: 43px;
     }
 
     .burger {
@@ -1936,23 +1983,33 @@ body.no-scroll {
     }
 
     .banner-content {
-        padding: 15px;
-        top: 40%;
+        padding: 40px 50px;
+        max-width: 60%;
+        max-height: 60%;
+        width: 450px;
+        height: 270px;
+        top: 37%;
+        animation: fadeIn 1s ease-in-out;
+        left: 5%;
+        transform: translateY(-50%);
     }
 
     .banner-content h1 {
-        font-size: 22px;
-        margin-bottom: 10px;
-    }
-
-    .banner-content p {
-        font-size: 14px;
+        font-size: 28px;
+        font-weight: bold;
         margin-bottom: 15px;
     }
 
+    .banner-content p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
     .order-button {
-        padding: 8px 16px;
-        font-size: 14px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
     }
 
     .water-info {
@@ -1985,7 +2042,7 @@ body.no-scroll {
 /* Специфические стили для узких экранов от 375px до 320px */
 @media (max-width: 375px) {
     .logo {
-        width: 100px;
+        width: 160px;
     }
 
     .language-switcher {
@@ -1998,20 +2055,37 @@ body.no-scroll {
     }
 
     .qr-code {
-        width: 30px;
+        width: 40px;
+    }
+    .banner-content {
+        text-align: center;
+        padding: 40px 50px;
+        max-width: 60%;
+        max-height: 60%;
+        width: 450px;
+        height: 285px;
+        top: 37%;
+        animation: fadeIn 1s ease-in-out;
+        left: 5%;
+        transform: translateY(-50%);
     }
 
     .banner-content h1 {
-        font-size: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 15px;
     }
 
     .banner-content p {
-        font-size: 13px;
+        font-size: 18px;
+        margin-bottom: 20px;
     }
 
     .order-button {
-        padding: 7px 14px;
-        font-size: 13px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
     }
 
     .water-info {
@@ -2041,10 +2115,23 @@ body.no-scroll {
     }
 
     .close-btn {
-        top: 5px;
-        right: 10px;
-        font-size: 18px;
-    }
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1); /* Легкая прозрачность */
+    color: #333;
+    border: none;
+    border-radius: 20%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
 
     .close-btn-contact {
         top: -25px;
@@ -2060,35 +2147,42 @@ body.no-scroll {
     }
 
     .logo {
-        width: 90px;
+        width: 160px;
     }
 
     .qr-code {
-        width: 25px;
-    }
-
-    .banner {
-        height: 90vh;
+        width: 38px;
     }
 
     .banner-content {
-        padding: 10px;
-        top: 40%;
+        text-align: center;
+        padding: 40px 50px;
+        max-width: 60%;
+        max-height: 60%;
+        width: 450px;
+        height: 285px;
+        top: 37%;
+        animation: fadeIn 1s ease-in-out;
+        left: 5%;
+        transform: translateY(-50%);
     }
 
     .banner-content h1 {
-        font-size: 18px;
-        margin-bottom: 8px;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 15px;
     }
 
     .banner-content p {
-        font-size: 12px;
-        margin-bottom: 12px;
+        font-size: 18px;
+        margin-bottom: 20px;
     }
 
     .order-button {
-        padding: 6px 12px;
-        font-size: 12px;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
     }
 
     .water-info {
