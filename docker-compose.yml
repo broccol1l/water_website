@@ -1,0 +1,26 @@
+
+networks:
+  dev:
+
+services:
+  nginx:
+    image: nginx:stable-alpine  # Исправил 'alphine' → 'alpine'
+    ports:
+      - "80:80"
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf'
+      - './templates:/usr/share/nginx/html'
+      - './static:/usr/share/nginx/html/static'
+    depends_on:
+      - backend
+    networks:
+      - dev
+
+  backend:
+    build:
+      context: .  # Вместо './backend' — берём текущую папку
+    networks:
+      - dev
+    expose:
+      - "8000"  # FastAPI обычно работает на 8000
+

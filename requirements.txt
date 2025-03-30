@@ -8,3 +8,4 @@ jinja2
 alembic
 python-multipart
 httpx
+psycopg2-binary

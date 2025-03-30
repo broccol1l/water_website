@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM загружен.");
 
+
     function moveLanguageSwitcher() {
         const nav = document.querySelector(".nav");
         const langSwitcher = document.querySelector(".language-switcher");
@@ -41,28 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Логика для dropdown в мобильной версии
-    if (window.innerWidth <= 1100) {
-        document.querySelectorAll(".dropdown > a").forEach(dropdownToggle => {
-            dropdownToggle.addEventListener("click", (e) => {
-                e.preventDefault(); // Предотвращаем переход по ссылке
-                const dropdownMenu = dropdownToggle.nextElementSibling;
+    function setupDropdown() {
+    document.querySelectorAll(".dropdown > a").forEach(dropdownToggle => {
+        dropdownToggle.addEventListener("click", (e) => {
+            e.preventDefault(); // Предотвращаем переход по ссылке
+            const dropdownMenu = dropdownToggle.nextElementSibling;
 
-                // Если кликнули на пункт, который уже открыт — просто закроем его
-                if (dropdownMenu.classList.contains("open")) {
-                    dropdownMenu.classList.remove("open");
-                    return;
-                }
+            // Если кликнули на пункт, который уже открыт — просто закроем его
+            if (dropdownMenu.classList.contains("open")) {
+                dropdownMenu.classList.remove("open");
+                return;
+            }
 
-                // Закрываем все другие открытые меню
-                document.querySelectorAll(".dropdown-menu.open").forEach(menu => {
-                    menu.classList.remove("open");
-                });
-
-                // Открываем только нужное меню
-                dropdownMenu.classList.add("open");
+            // Закрываем все другие открытые меню
+            document.querySelectorAll(".dropdown-menu.open").forEach(menu => {
+                menu.classList.remove("open");
             });
+
+            // Открываем только нужное меню
+            dropdownMenu.classList.add("open");
         });
-    }
+    });
+}
+
+// Вызываем функцию при загрузке и при изменении размера экрана
+setupDropdown();
+window.addEventListener("resize", setupDropdown);
 
     // --- Открытие модального окна контактов ---
     const contactsModalOverlay = document.getElementById("contactsModalOverlay")
@@ -106,6 +111,44 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- Переводы интерфейса ---
     const translations = {
         "ru": {
+            "footer-h3-1": "Контакты",
+            "footer-p1": "Колл-центр: {footer-p1-link}",
+            "footer-p2": "Корп. номер: {footer-p2-link}",
+            "footer-p3": "Email: {footer-p3-link}",
+            "footer-h3-2": "Оплата",
+            "footer-h3-3": "Наш Telegram-бот",
+            "footer-a": "Телеграм-бот",
+            "footer-p4": "© 2025 SEROB. Все права защищены.",
+
+            "payment-h2": "Способы оплаты",
+            "call-centre-h2": "Центр поддержки клиентов",
+            "call-centre-p1": "Наш колл-центр работает для вас ежедневно с {call-centre-strong1}, за исключением воскресений и государственных праздников.",
+            "call-centre-p2": "Мы готовы помочь вам с любыми вопросами, связанными с заказами, доставкой и продукцией. Наши операторы обеспечат быстрые и профессиональные ответы.",
+            "call-centre-p3": "Свяжитесь с нами по телефону {call-centre-strong2}, и мы с радостью вам поможем!",
+
+            "call-centre-strong1": "9:00 до 23:00",
+            "call-centre-strong2": "+998 (55) 512-02-02",
+
+            "delivery-h2": "Быстрая и удобная доставка",
+            "delivery-p1": "Мы заботимся о вашем комфорте и доставляем чистую питьевую воду прямо к вам домой или в офис.",
+            "delivery-p2": "🕒 Доставка работает с 9:00 до 23:00, с понедельника по субботу.",
+            "delivery-p3": "🚚 Бесплатная доставка по Ташкенту!",
+
+            "about-company-h1": "О компании SEROB",
+            "about-company-p1": "SEROB WATER – это не просто бренд питьевой воды, а целая философия заботы о здоровье и комфорте. Хотя компания SEROB была основана недавно, наш опыт в индустрии начинается с 2010 года. До сегодняшнего дня мы прошли долгий путь, анализируя и исправляя ошибки прошлых проектов, чтобы создать действительно качественный продукт. Наша цель – сделать чистую и полезную воду доступной каждому. Сегодня мы обслуживаем тысячи клиентов по всему Узбекистану и продолжаем развиваться.",
+            "about-company-h2": "Наша миссия",
+            "about-company-p2": "Мы верим, что чистая вода – это основа жизни. Поэтому наша цель – не только поставлять качественную продукцию, но и формировать культуру осознанного потребления воды. Мы стремимся сделать доступ к здоровой воде простым и удобным для каждого.",
+            "about-company-h3": "Наши ценности",
+            "about-company-li1": "🌍 {about-company-strong1} – мы заботимся о природе, используя перерабатываемые материалы и снижая углеродный след.",
+            "about-company-strong1": "Экологичность",
+            "about-company-li2": "💙 {about-company-strong2} – гарантируем качество на каждом этапе, от очистки до доставки.",
+            "about-company-strong2": "Ответственность",
+            "about-company-li3": "🤝 {about-company-strong3} – строим долгосрочные отношения, предлагая удобный сервис и стабильное качество.",
+            "about-company-strong3": "Доверие клиентов",
+            "about-company-li4": "🚀 {about-company-strong4} – внедряем современные технологии очистки и разрабатываем новые решения для удобного использования воды.",
+            "about-company-strong4": "Инновации",
+            "about-company-final": "SEROB WATER – это больше, чем вода. Это забота о вашем здоровье, удобство в повседневной жизни и вклад в чистое будущее.",
+
             "water-desc-h3": "Почему выбирают SEROB ВОДУ?",
             "water-desc-li1": "{water-desc-li1s} многократная фильтрация без вредных примесей.",
             "water-desc-li2": "{water-desc-li2s} без посторонних запахов и примесей.",
@@ -143,6 +186,44 @@ document.addEventListener("DOMContentLoaded", function () {
             "contactsLocationValue": "ул. Мусамухамедова, городской посёлок Салар, Кибрайский район, Ташкентская область"
         },
         "en": {
+            "footer-h3-1": "Contacts",
+            "footer-p1": "Call Center: {footer-p1-link}",
+            "footer-p2": "Corp. Number: {footer-p2-link}",
+            "footer-p3": "Email: {footer-p3-link}",
+            "footer-h3-2": "Payment",
+            "footer-h3-3": "Our Telegram Bot",
+            "footer-a": "Telegram Bot",
+            "footer-p4": "© 2025 SEROB. All rights reserved.",
+
+            "payment-h2": "Payment methods",
+            "call-centre-h2": "Customer Support Center",
+            "call-centre-p1": "Our call center operates daily from {call-centre-strong1}, except on Sundays and public holidays.",
+            "call-centre-p2": "We are ready to assist you with any questions regarding orders, delivery, and products. Our operators provide fast and professional responses.",
+            "call-centre-p3": "Contact us by phone at {call-centre-strong2}, and we will be happy to help!",
+
+            "call-centre-strong1": "9:00 AM to 11:00 PM",
+            "call-centre-strong2": "+998 (55) 512-02-02",
+
+            "delivery-h2": "Fast and Convenient Delivery",
+            "delivery-p1": "We care about your comfort and deliver clean drinking water straight to your home or office.",
+            "delivery-p2": "🕒 Delivery operates from 9:00 AM to 11:00 PM, Monday to Saturday.",
+            "delivery-p3": "🚚 Free delivery in Tashkent!",
+
+            "about-company-h1": "About SEROB",
+            "about-company-p1": "SEROB WATER is not just a drinking water brand but a whole philosophy of care for health and comfort. Although the company SEROB was founded recently, our experience in the industry dates back to 2010. Up to this day, we have come a long way, analyzing and correcting the mistakes of past projects to create a truly high-quality product. Our goal is to make clean and healthy water accessible to everyone. Today, we serve thousands of customers across Uzbekistan and continue to grow.",
+            "about-company-h2": "Our Mission",
+            "about-company-p2": "We believe that clean water is the foundation of life. That is why our goal is not only to provide quality products but also to promote a culture of conscious water consumption. We strive to make access to healthy water simple and convenient for everyone.",
+            "about-company-h3": "Our Values",
+            "about-company-li1": "🌍 {about-company-strong1} – we care about nature by using recyclable materials and reducing our carbon footprint.",
+            "about-company-strong1": "Environmental Responsibility",
+            "about-company-li2": "💙 {about-company-strong2} – we guarantee quality at every stage, from purification to delivery.",
+            "about-company-strong2": "Responsibility",
+            "about-company-li3": "🤝 {about-company-strong3} – we build long-term relationships by offering convenient service and consistent quality.",
+            "about-company-strong3": "Customer Trust",
+            "about-company-li4": "🚀 {about-company-strong4} – we implement modern purification technologies and develop new solutions for convenient water usage.",
+            "about-company-strong4": "Innovation",
+            "about-company-final": "SEROB WATER is more than just water. It is about caring for your health, making everyday life convenient, and contributing to a cleaner future.",
+
             "water-desc-h3": "Why choose SEROB WATER?",
             "water-desc-li1": "{water-desc-li1s} multiple filtration without harmful impurities.",
             "water-desc-li2": "{water-desc-li2s} free from foreign odors and contaminants.",
@@ -182,6 +263,44 @@ document.addEventListener("DOMContentLoaded", function () {
             "contactsLocationValue": "Musamukhamedova St., Salar town, Kibray district, Tashkent region"
         },
         "uz": {
+            "footer-h3-1": "Aloqa",
+            "footer-p1": "Call-markaz: {footer-p1-link}",
+            "footer-p2": "Korp. raqam: {footer-p2-link}",
+            "footer-p3": "Email: {footer-p3-link}",
+            "footer-h3-2": "To‘lov",
+            "footer-h3-3": "Bizning Telegram-bot",
+            "footer-a": "Telegram-bot",
+            "footer-p4": "© 2025 SEROB. Barcha huquqlar himoyalangan.",
+
+            "payment-h2": "To'lov",
+            "call-centre-h2": "Mijozlarni qo‘llab-quvvatlash markazi",
+            "call-centre-p1": "Bizning call-markazimiz har kuni {call-centre-strong1} ishlaydi, yakshanba va davlat bayramlaridan tashqari.",
+            "call-centre-p2": "Buyurtmalar, yetkazib berish va mahsulotlar bo‘yicha har qanday savollaringizga javob berishga tayyormiz. Operatorlarimiz tez va professional javoblarni taqdim etadilar.",
+            "call-centre-p3": "Biz bilan {call-centre-strong2} telefon raqami orqali bog‘laning, biz sizga mamnuniyat bilan yordam beramiz!",
+
+            "call-centre-strong1": "9:00 dan 23:00 gacha",
+            "call-centre-strong2": "+998 (55) 512-02-02",
+
+            "delivery-h2": "Tez va qulay yetkazib berish",
+            "delivery-p1": "Biz sizning qulayligingiz haqida g‘amxo‘rlik qilamiz va toza ichimlik suvini bevosita uyingizga yoki ofisingizga yetkazib beramiz.",
+            "delivery-p2": "🕒 Yetkazib berish soat 9:00 dan 23:00 gacha, dushanbadan shanbagacha ishlaydi.",
+            "delivery-p3": "🚚 Toshkent bo‘ylab bepul yetkazib berish!",
+
+            "about-company-h1": "SEROB Haqida",
+            "about-company-p1": "SEROB WATER bu shunchaki ichimlik suvi brendi emas, balki sog‘liq va qulaylik haqida g‘amxo‘rlik falsafasidir. Garchi SEROB kompaniyasi yaqinda tashkil etilgan bo‘lsa-da, bizning sanoatdagi tajribamiz 2010-yildan boshlangan. Bugungi kungacha biz uzoq yo‘lni bosib o‘tdik, o‘tgan loyihalardagi xatolarni tahlil qilib, to‘g‘rilash orqali haqiqatan ham yuqori sifatli mahsulot yaratdik. Bizning maqsadimiz – toza va foydali suvni har bir kishiga yetkazish. Bugungi kunda biz O‘zbekiston bo‘ylab minglab mijozlarga xizmat ko‘rsatmoqdamiz va rivojlanishda davom etmoqdamiz.",
+            "about-company-h2": "Bizning Missiyamiz",
+            "about-company-p2": "Biz ishonamizki, toza suv – bu hayot asosidir. Shu sababli, bizning maqsadimiz nafaqat sifatli mahsulot yetkazib berish, balki ongli suv iste’moli madaniyatini shakllantirishdir. Biz sog‘lom suvga kirishni har bir kishi uchun oson va qulay qilishga intilamiz.",
+            "about-company-h3": "Bizning Qadriyatlarimiz",
+            "about-company-li1": "🌍 {about-company-strong1} – biz qayta ishlanadigan materiallardan foydalanish va karbon izimizni kamaytirish orqali tabiatga g‘amxo‘rlik qilamiz.",
+            "about-company-strong1": "Ekologik Mas’uliyat",
+            "about-company-li2": "💙 {about-company-strong2} – tozalashdan tortib yetkazib berishgacha har bir bosqichda sifat kafolatlanadi.",
+            "about-company-strong2": "Mas’uliyat",
+            "about-company-li3": "🤝 {about-company-strong3} – biz qulay xizmat va barqaror sifat taklif qilib, uzoq muddatli munosabatlarni quramiz.",
+            "about-company-strong3": "Mijozlar Ishonchi",
+            "about-company-li4": "🚀 {about-company-strong4} – biz zamonaviy tozalash texnologiyalarini joriy etamiz va suvdan foydalanish uchun yangi qulay yechimlarni ishlab chiqamiz.",
+            "about-company-strong4": "Innovatsiyalar",
+            "about-company-final": "SEROB WATER bu shunchaki suv emas. Bu sizning sog‘lig‘ingizga g‘amxo‘rlik, kundalik hayotingizda qulaylik va toza kelajakka qo‘shilgan hissadir.",
+
             "water-desc-h3": "Nega SEROB SUV tanlashadi?",
             "water-desc-li1": "{water-desc-li1s} zararli aralashmalarsiz ko‘p bosqichli filtratsiya.",
             "water-desc-li2": "{water-desc-li2s} begona hid va qo‘shimchalarsiz.",
@@ -237,6 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const subtitleWithPlaceholder = translations[lang]["subtitle"].replace("{highlight1}", `<span class="highlight" id="highlight1">${highlight1Text}</span>`);
         document.getElementById("subtitle").innerHTML = subtitleWithPlaceholder;
 
+
         // Обновляем текст заголовков и описаний списка преимуществ
         document.getElementById("water-desc-h3").textContent = translations[lang]["water-desc-h3"];
 
@@ -251,23 +371,75 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("water-desc-li2").childNodes[1].nodeValue = translations[lang]["water-desc-li2"].replace("{water-desc-li2s}", "");
         document.getElementById("water-desc-li3").childNodes[1].nodeValue = translations[lang]["water-desc-li3"].replace("{water-desc-li3s}", "");
         document.getElementById("water-desc-li4").innerHTML =
-    `<strong id="water-desc-li4s">${translations[lang]["water-desc-li4s"]}</strong>
-    ${translations[lang]["water-desc-li4"].replace("{water-desc-href}", `<a href="https://t.me/serobsuvbot" id="water-desc-href">${translations[lang]["water-desc-href"]}</a>`).replace("{water-desc-li4s}", "")}`;
+        `<strong id="water-desc-li4s">${translations[lang]["water-desc-li4s"]}</strong>
+        ${translations[lang]["water-desc-li4"].replace("{water-desc-href}", `<a href="https://t.me/serobsuvbot" id="water-desc-href">${translations[lang]["water-desc-href"]}</a>`).replace("{water-desc-li4s}", "")}`;
 
+        // Обновляем текст внутри <strong>
+        document.getElementById("about-company-strong1").textContent = translations[lang]["about-company-strong1"];
+        document.getElementById("about-company-strong2").textContent = translations[lang]["about-company-strong2"];
+        document.getElementById("about-company-strong3").textContent = translations[lang]["about-company-strong3"];
+        document.getElementById("about-company-strong4").textContent = translations[lang]["about-company-strong4"];
+
+        // Обновляем элементы списка с учетом <strong>
+        document.getElementById("about-company-li1").innerHTML =
+            `🌍 <strong id="about-company-strong1">${translations[lang]["about-company-strong1"]}</strong>
+            ${translations[lang]["about-company-li1"].replace("{about-company-strong1}", "")}`;
+
+        document.getElementById("about-company-li2").innerHTML =
+            `💙 <strong id="about-company-strong2">${translations[lang]["about-company-strong2"]}</strong>
+            ${translations[lang]["about-company-li2"].replace("{about-company-strong2}", "")}`;
+
+        document.getElementById("about-company-li3").innerHTML =
+            `🤝 <strong id="about-company-strong3">${translations[lang]["about-company-strong3"]}</strong>
+            ${translations[lang]["about-company-li3"].replace("{about-company-strong3}", "")}`;
+
+        document.getElementById("about-company-li4").innerHTML =
+            `🚀 <strong id="about-company-strong4">${translations[lang]["about-company-strong4"]}</strong>
+            ${translations[lang]["about-company-li4"].replace("{about-company-strong4}", "")}`;
+
+        document.getElementById("call-centre-p1").innerHTML =
+            translations[lang]["call-centre-p1"].replace(
+                "{call-centre-strong1}",
+                `<strong id="call-centre-strong1">${translations[lang]["call-centre-strong1"]}</strong>`
+            );
+
+        document.getElementById("call-centre-p3").innerHTML =
+            translations[lang]["call-centre-p3"].replace(
+                "{call-centre-strong2}",
+                `<strong id="call-centre-strong2">${translations[lang]["call-centre-strong2"]}</strong>`
+            );
+        document.getElementById("footer-h3-1").textContent = translations[lang]["footer-h3-1"];
+document.getElementById("footer-h3-2").textContent = translations[lang]["footer-h3-2"];
+document.getElementById("footer-h3-3").textContent = translations[lang]["footer-h3-3"];
+document.getElementById("footer-a").textContent = translations[lang]["footer-a"];
+document.getElementById("footer-p4").textContent = translations[lang]["footer-p4"];
+
+// Обновляем параграфы с учетом <a>
+document.getElementById("footer-p1").innerHTML =
+    `📞 ${translations[lang]["footer-p1"].replace("{footer-p1-link}", '<a href="tel:+998959630202">+998 (95) 963-02-02</a>')}`;
+
+document.getElementById("footer-p2").innerHTML =
+    `🏢 ${translations[lang]["footer-p2"].replace("{footer-p2-link}", '<a href="tel:+998555120202">+998 (55) 512-02-02</a>')}`;
+
+document.getElementById("footer-p3").innerHTML =
+    `📧 ${translations[lang]["footer-p3"].replace("{footer-p3-link}", '<a href="mailto:info@serobsuv.uz">info@serobsuv.uz</a>')}`;
 
         // Обновляем текст заголовков и описаний воды
         const elementsToUpdate = [
             "water-h2", "water-p", "water-h3-1", "water-p-1",
             "water-h3-2", "water-p-2", "water-h3-3", "water-p-3",
-            "water-desc-h3"
+            "water-desc-h3", "about-company-h1", "about-company-p1",
+            "about-company-h2", "about-company-p2", "about-company-h3",
+            "about-company-final", "delivery-h2", "delivery-p1", "delivery-p2",
+            "delivery-p3", "call-centre-h2", "call-centre-p2", "payment-h2"
         ];
 
-elementsToUpdate.forEach(id => {
-    const elem = document.getElementById(id);
-    if (elem) {
-        elem.textContent = translations[lang][id];
-    }
-});
+        elementsToUpdate.forEach(id => {
+            const elem = document.getElementById(id);
+            if (elem) {
+                elem.textContent = translations[lang][id];
+            }
+        });
         document.getElementById("main-title").textContent = translations[lang]["main-title"];
         document.getElementById("order-button").textContent = translations[lang]["order-button"];
         document.getElementById("about").textContent = translations[lang]["about"];
@@ -281,10 +453,10 @@ elementsToUpdate.forEach(id => {
             link.textContent = link.getAttribute(`data-name-${lang}`);
         });
 
-            document.querySelectorAll(".accessory-link").forEach(link => {
-                link.textContent = link.getAttribute(`data-name-${lang}`);
-            });
-            // Обновляем текст в модальном окне контактов
+        document.querySelectorAll(".accessory-link").forEach(link => {
+            link.textContent = link.getAttribute(`data-name-${lang}`);
+        });
+        // Обновляем текст в модальном окне контактов
         document.getElementById("contactsTitle").textContent = translations[lang]["contactsTitle"];
         document.getElementById("contactsCorporate").innerHTML = `<strong>${translations[lang]["contactsCorporate"]}</strong> +998 (95) 963-02-02`;
         document.getElementById("contactsCallCenter").innerHTML = `<strong>${translations[lang]["contactsCallCenter"]}</strong> +998 (55) 512-02-02`;
@@ -305,19 +477,19 @@ elementsToUpdate.forEach(id => {
         // Устанавливаем язык при загрузке страницы
         updateLanguage(currentLang);
 
-    // --- Модальное окно ---
-    const modalOverlay = document.getElementById("modalOverlay");
-    const productModal = document.getElementById("productModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription");
-    const modalPhotos = document.getElementById("modalPhotos");
-    const closeModal = document.getElementById("closeModal");
+        // --- Модальное окно ---
+        const modalOverlay = document.getElementById("modalOverlay");
+        const productModal = document.getElementById("productModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalPhotos = document.getElementById("modalPhotos");
+        const closeModal = document.getElementById("closeModal");
 
-    function openModal(title, description, photos) {
-        modalTitle.textContent = title;
-        modalDescription.textContent = description || "";
+        function openModal(title, description, photos) {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description || "";
 
-        modalPhotos.innerHTML = "";
+            modalPhotos.innerHTML = "";
 
         if (photos.length > 0) {
             let currentPhotoIndex = 0;
@@ -357,9 +529,19 @@ elementsToUpdate.forEach(id => {
         productModal.style.display = "block";
     }
 
+    function showDropdownMenu() {
+        document.querySelectorAll(".dropdown-menu").forEach(menu => {
+            menu.classList.remove("open");
+        });
+    }
+
+    // --- Обновление обработчика закрытия модального окна ---
     function closeModalHandler() {
         modalOverlay.style.display = "none";
         productModal.style.display = "none";
+
+        // Показываем Dropdown после закрытия модального окна
+        showDropdownMenu();
     }
 
     document.querySelectorAll(".product-link, .accessory-link").forEach(link => {
