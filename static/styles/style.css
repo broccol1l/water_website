@@ -2279,25 +2279,32 @@ footer a:hover {
 
 /* Large Desktop Screens (1920px to 2560px) */
 @media (min-width: 1920px) and (max-width: 2560px) {
+    .logo{
+        width: 250px;
+    }
+    .qr-code {
+        width: 60px;
+    }
     .container, .water-info .container {
         max-width: 1800px;
     }
 
     .banner-content {
         max-width: 800px;
-        left: 10%;
+        width: 600px;
+        height: 365px;
     }
 
     .banner-content h1 {
-        font-size: 52px;
+        font-size: 60px;
     }
 
     .banner-content p {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .order-button {
-        padding: 16px 32px;
+        padding: 22px 72px;
         font-size: 24px;
     }
 
@@ -2431,13 +2438,25 @@ footer a:hover {
     .container, .water-info .container {
         max-width: 2400px;
     }
+    .dropdown-menu {
+        padding: 20px 30px 20px 5px;
+        border-radius: 20px;
+    }
+
+    .dropdown-menu li {
+        padding: 20px 0px 20px 5px;
+    }
+
+    .dropdown-menu li a {
+        padding: 20px 0px 20px 5px;
+    }
 
     .logo {
-        width: 300px;
+        width: 370px;
     }
 
     .qr-code {
-        width: 70px;
+        width: 95px;
     }
 
     .nav {
@@ -2445,8 +2464,9 @@ footer a:hover {
     }
 
     .nav a {
-        font-size: 24px;
+        font-size: 26px;
     }
+
 
     .lang-btn {
         padding: 8px 16px;
@@ -2459,24 +2479,26 @@ footer a:hover {
 
     .banner-content {
         max-width: 1200px;
+        width: 800px;
+        height: 470px;
         padding: 60px 80px;
         left: 10%;
         border-radius: 25px;
     }
 
     .banner-content h1 {
-        font-size: 72px;
+        font-size: 80px;
         margin-bottom: 30px;
     }
 
     .banner-content p {
-        font-size: 36px;
+        font-size: 38px;
         margin-bottom: 40px;
     }
 
     .order-button {
         padding: 20px 40px;
-        font-size: 32px;
+        font-size: 40px;
         border-radius: 15px;
     }
 
@@ -2686,22 +2708,25 @@ footer a:hover {
 
     /* Modal windows */
     .modal, .contacts-modal {
-        max-width: 800px;
+        max-width: 900px;
+        max-height: 500px
         padding: 40px;
         border-radius: 20px;
     }
 
     #modalTitle {
-        font-size: 36px;
+        font-size: 50px;
     }
 
     .modal-description {
-        font-size: 24px;
+        font-size: 30px;
         margin-top: 20px;
     }
 
     .close-btn, .close-btn-contact {
-        font-size: 36px;
+        font-size: 40px;
+        width: 60px;
+        height: 60px;
     }
 
     .modal-photos img {
@@ -2709,23 +2734,23 @@ footer a:hover {
     }
 
     .photo-nav {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
     }
 
     .contacts-modal h2 {
-        font-size: 36px;
+        font-size: 42px;
         margin-bottom: 25px;
     }
 
     .contacts-modal p {
-        font-size: 24px;
+        font-size: 35px;
         margin: 10px 0;
     }
 
     .contacts-map {
-        height: 400px;
+        height: 500px;
         margin-top: 30px;
     }
 }
@@ -2841,4 +2866,27 @@ footer a:hover {
         border-left: 10px solid #004c99;
         border-radius: 15px;
     }
+}
+
+.delivery-content {
+    background: rgba(0, 0, 0, 0.3); /* Чёрный с прозрачностью */
+    padding: 20px 40px;
+    border-radius: 50px;
+    max-width: 80%;
+    text-align: center;
+}
+
+/* Стилизация текста */
+.delivery-content h2,
+.delivery-content p {
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.made-by {
+    margin-top: auto; /* Позволяет "прижать" текст вниз */
+    font-size: 14px;
+    opacity: 0.8;
+    text-align: center;
+    width: 100%;
 }
