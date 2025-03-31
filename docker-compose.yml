@@ -1,26 +1,29 @@
-
-networks:
-  dev:
+version: '3.8'
 
 services:
-  nginx:
-    image: nginx:stable-alpine  # Исправил 'alphine' → 'alpine'
+  db:
+    image: postgres:17.4
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: serobsuv
+      POSTGRES_DB: serobsuvwater
     ports:
-      - "80:80"
+      - "5432:5432"
     volumes:
-      - './nginx.conf:/etc/nginx/nginx.conf'
-      - './templates:/usr/share/nginx/html'
-      - './static:/usr/share/nginx/html/static'
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: fastapi_app
+    restart: always
     depends_on:
-      - backend
-    networks:
-      - dev
+      - db
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env  # FastAPI теперь берет DATABASE_URL отсюда
 
-  backend:
-    build:
-      context: .  # Вместо './backend' — берём текущую папку
-    networks:
-      - dev
-    expose:
-      - "8000"  # FastAPI обычно работает на 8000
-
+volumes:
+  postgres_data:
